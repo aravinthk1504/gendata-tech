@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+
+/* =========================================
+   GenData Tech Brand Theme
+   ========================================= */
+
+ @theme {
+  --color-brand-primary: #002dcc;
+  --color-brand-accent: #057cfa;
+
+  --color-brand-dark: #06142f;
+  --color-brand-navy: #081b3a;
+
+  --color-brand-light: #f5f8ff;
+  --color-brand-white: #ffffff;
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Montserrat", sans-serif;
+}
+
+
+/* =========================================
+   Global Styles
+   ========================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family: "Montserrat", sans-serif;
+
+  background: #ffffff;
+  color: #081b3a;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   Custom Cursor
+========================================= */
+
+@media (pointer: fine) and (min-width: 768px) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
