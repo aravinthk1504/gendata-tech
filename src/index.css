@@ -7,7 +7,7 @@
    GenData Tech Brand Theme
    ========================================= */
 
- @theme {
+@theme {
   --color-brand-primary: #002dcc;
   --color-brand-accent: #057cfa;
 
@@ -34,6 +34,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 
   font-family: "Montserrat", sans-serif;
 
@@ -45,6 +46,11 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(5, 124, 250, 0.25);
+  color: inherit;
 }
 
 h1,
@@ -61,6 +67,12 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #057cfa;
+  outline-offset: 4px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -75,5 +87,25 @@ a {
   a,
   button {
     cursor: none;
+  }
+}
+
+
+/* =========================================
+   Reduced Motion
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
