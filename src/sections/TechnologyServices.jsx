@@ -10,33 +10,106 @@ function FullStackVisual() {
   ]
 
   return (
-    <div className="relative mt-2 flex min-h-64 items-center justify-center overflow-hidden sm:min-h-70">
-      <div className="absolute h-56 w-56 rounded-full bg-blue-100/70 blur-[80px] sm:h-60 sm:w-60" />
+    <div className="relative mt-8 overflow-hidden lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/60 blur-[70px] lg:h-60 lg:w-60 lg:bg-blue-100/70 lg:blur-[80px]" />
 
-      <div className="relative z-10 grid w-full max-w-md grid-cols-2 gap-4 px-1 sm:flex sm:max-w-xl sm:items-center sm:justify-center sm:gap-0 sm:px-0">
+      {/* Mobile / tablet: vertical architecture flow */}
+      <div className="relative z-10 mx-auto flex max-w-sm flex-col items-stretch gap-0 lg:hidden">
         {layers.map((layer, index) => (
-          <div key={layer.name} className="relative flex items-center justify-center sm:justify-start">
+          <div key={layer.name} className="relative">
             <motion.div
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.25 }}
-              className={`relative flex h-24 w-full max-w-32 flex-col items-center justify-center rounded-2xl border bg-white px-2 shadow-[0_10px_35px_rgba(15,23,42,0.05)] sm:h-22 sm:w-25 sm:max-w-none sm:px-0 sm:w-28 ${
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: index * 0.07 }}
+              className={`relative flex items-center justify-between rounded-2xl border bg-white px-5 py-4 shadow-[0_10px_30px_rgba(15,23,42,0.05)] ${
                 index === 0 ? "border-brand-accent/30" : "border-slate-200"
               }`}
             >
-              <span className={`font-heading text-xs font-semibold ${index === 0 ? "text-brand-primary" : "text-slate-800"}`}>
+              <div className="flex items-center gap-3">
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-heading text-[10px] font-semibold ${
+                    index === 0
+                      ? "bg-brand-accent text-white"
+                      : "bg-slate-50 text-slate-500"
+                  }`}
+                >
+                  0{index + 1}
+                </span>
+
+                <div>
+                  <p
+                    className={`font-heading text-sm font-semibold ${
+                      index === 0 ? "text-brand-primary" : "text-slate-900"
+                    }`}
+                  >
+                    {layer.name}
+                  </p>
+                  <p className="mt-0.5 font-body text-[9px] text-slate-400">
+                    {layer.sub}
+                  </p>
+                </div>
+              </div>
+
+              <span className="font-body text-[9px] font-semibold uppercase tracking-[0.14em] text-slate-300">
+                {index === layers.length - 1 ? "Store" : "Next"}
+              </span>
+            </motion.div>
+
+            {index !== layers.length - 1 && (
+              <div className="relative mx-auto h-6 w-px overflow-hidden bg-slate-200">
+                <motion.span
+                  animate={{ y: ["-100%", "250%"] }}
+                  transition={{
+                    duration: 1.6,
+                    delay: index * 0.25,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute left-0 h-1/2 w-px bg-brand-accent"
+                />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: horizontal architecture flow */}
+      <div className="relative z-10 hidden w-full max-w-xl items-center justify-center lg:flex">
+        {layers.map((layer, index) => (
+          <div key={layer.name} className="flex items-center">
+            <motion.div
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.25 }}
+              className={`relative flex h-22 w-28 flex-col items-center justify-center rounded-2xl border bg-white shadow-[0_10px_35px_rgba(15,23,42,0.05)] ${
+                index === 0 ? "border-brand-accent/30" : "border-slate-200"
+              }`}
+            >
+              <span
+                className={`font-heading text-xs font-semibold ${
+                  index === 0 ? "text-brand-primary" : "text-slate-800"
+                }`}
+              >
                 {layer.name}
               </span>
-              <span className="mt-1 font-body text-[9px] text-slate-400">{layer.sub}</span>
+              <span className="mt-1 font-body text-[9px] text-slate-400">
+                {layer.sub}
+              </span>
               {index === 0 && (
                 <span className="absolute -top-1 h-2 w-2 rounded-full bg-brand-accent shadow-[0_0_15px_rgba(5,124,250,0.8)]" />
               )}
             </motion.div>
 
             {index !== layers.length - 1 && (
-              <div className="relative hidden h-px w-5 overflow-hidden bg-slate-200 sm:block sm:w-8">
+              <div className="relative h-px w-8 overflow-hidden bg-slate-200">
                 <motion.span
                   animate={{ x: ["-100%", "250%"] }}
-                  transition={{ duration: 2, delay: index * 0.4, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 2,
+                    delay: index * 0.4,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                   className="absolute h-px w-1/2 bg-brand-accent"
                 />
               </div>
@@ -210,7 +283,7 @@ function TechnologyServices() {
 
         <div className="mt-14 grid gap-5 sm:mt-16 lg:mt-20 lg:grid-cols-2">
           <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65 }} className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:col-span-2 lg:p-10">
-            <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
+            <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
               <div>
                 <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-primary">01 / Full Stack</span>
                 <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.03em] text-slate-950 lg:text-4xl">Full Stack Development</h3>
