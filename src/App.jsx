@@ -1,5 +1,5 @@
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
 } from "react-router-dom"
@@ -13,33 +13,21 @@ import Services from "./pages/Services"
 import CustomCursor from "./components/CustomCursor"
 import ScrollToTop from "./components/ScrollToTop"
 
-
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-
+    <HashRouter>
       <CustomCursor />
       <ScrollToTop />
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/blog" element={<Blog />} />
-
         <Route path="/contact" element={<Contact />} />
-
         <Route path="/about" element={<About />} />
-        
         <Route path="/services" element={<Services />} />
-
-
-        
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
-
-
-
 
 export default App
