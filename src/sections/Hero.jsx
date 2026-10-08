@@ -15,18 +15,18 @@ function Hero() {
       <AnimatedBackground />
 
       <div className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 select-none lg:block">
-        <span className="font-heading text-[15vw] font-bold leading-none tracking-[-0.08em] text-white/[0.015]">
-          GENDATA
+        <span className="font-heading text-[15vw] font-bold leading-none tracking-[-0.08em] text-white/[0.05]">
+          GenDataTech
         </span>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-16 pt-32 sm:pb-20 sm:pt-36 lg:px-10">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-6 pb-10 pt-24 sm:pb-12 sm:pt-28 lg:px-10">
         <div className="mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/4 px-4 py-2 backdrop-blur-md sm:mb-8"
+            className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/4 px-4 py-2 backdrop-blur-md sm:mb-7"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-accent opacity-60" />
@@ -54,7 +54,7 @@ function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18 }}
-            className="mx-auto mt-7 max-w-2xl font-body text-base leading-8 text-slate-300 sm:text-lg"
+            className="mx-auto mt-6 max-w-2xl font-body text-base leading-8 text-slate-300 sm:text-lg"
           >
             GenData Tech develops intelligent AI models, agentic systems
             and automation solutions engineered around real-world
@@ -65,7 +65,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.28 }}
-            className="mt-9 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row"
+            className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-8 sm:flex-row"
           >
             <Link
               to="/services"
@@ -87,46 +87,46 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.55 }}
-            className="mx-auto mt-14 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-4 border-t border-white/8 pt-7 sm:mt-18"
+            className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-4 border-t border-white/8 pt-5 sm:mt-12"
           >
             {["AI Models", "Agentic AI", "AI Automation", "Custom AI"].map((item, index) => (
               <div key={item} className="flex items-center gap-3">
                 {index !== 0 && (
                   <span className="hidden h-1 w-1 rounded-full bg-brand-accent sm:block" />
                 )}
-                <span className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
+                <span className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-slate-200">
                   {item}
                 </span>
               </div>
             ))}
           </motion.div>
         </div>
-      </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-8 left-1/2 z-20 hidden -translate-x-1/2 md:block"
-      >
-        <div className="flex flex-col items-center gap-3">
-          <span className="font-body text-[9px] uppercase tracking-[0.3em] text-slate-400">
-            Scroll
-          </span>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="relative z-20 mt-6 hidden md:block"
+        >
+          <div className="flex flex-col items-center gap-2">
+            <span className="font-body text-[9px] uppercase tracking-[0.3em] text-slate-200">
+              Scroll
+            </span>
 
-          <div className="relative h-9 w-px overflow-hidden bg-white/10">
-            <motion.span
-              animate={shouldAnimate ? { y: [-15, 36] } : { y: -15 }}
-              transition={{
-                duration: 1.8,
-                repeat: shouldAnimate ? Infinity : 0,
-                ease: "easeInOut",
-              }}
-              className="absolute left-0 top-0 h-4 w-px bg-brand-accent"
-            />
+            <div className="relative h-10 w-px overflow-hidden bg-white/10">
+              <motion.span
+                animate={shouldAnimate ? { y: [-15, 36] } : { y: -15 }}
+                transition={{
+                  duration: 1.8,
+                  repeat: shouldAnimate ? Infinity : 0,
+                  ease: "easeInOut",
+                }}
+                className="absolute left-0 top-0 h-4 w-px bg-brand-accent"
+              />
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   )
 }

@@ -126,7 +126,7 @@ function BlogCard({ post, index = 0 }) {
 
         <div className="flex items-center gap-3">
 
-          <span className="font-body text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-primary">
+          <span className="font-body text-[12px] font-semibold uppercase tracking-[0.15em] text-brand-primary">
             {post.category}
           </span>
 

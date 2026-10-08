@@ -36,7 +36,7 @@ function Insights() {
                 y: 0,
               }}
               viewport={{ once: true }}
-              className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-primary"
+              className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary"
             >
               Insights & Ideas
             </motion.p>

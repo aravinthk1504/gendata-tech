@@ -163,7 +163,7 @@ function Footer() {
                   GenData Tech
                 </p>
 
-                <p className="mt-0.5 font-body text-[7px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                <p className="mt-0.5 font-body text-[7px] font-semibold uppercase tracking-[0.2em] text-slate-200">
                   Intelligence. Engineered.
                 </p>
 
@@ -172,7 +172,7 @@ function Footer() {
             </Link>
 
 
-            <p className="mt-7 max-w-md font-body text-sm leading-7 text-slate-500">
+            <p className="mt-7 max-w-md font-body text-sm leading-7 text-slate-300">
               Building intelligent AI systems, digital products and
               connected technology designed for real-world applications.
             </p>
@@ -182,7 +182,7 @@ function Footer() {
 
             <div className="mt-8">
 
-              <p className="font-body text-[8px] font-semibold uppercase tracking-[0.2em] text-slate-600">
+              <p className="font-body text-[8px] font-semibold uppercase tracking-[0.2em] text-slate-200">
                 Connect
               </p>
 
@@ -206,7 +206,7 @@ function Footer() {
                       whileTap={{
                         scale: 0.95,
                       }}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-slate-500 transition duration-300 hover:border-brand-accent/40 hover:bg-brand-accent/10 hover:text-white"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-slate-200 transition duration-300 hover:border-brand-accent/40 hover:bg-brand-accent/10 hover:text-white"
                     >
                       <Icon size={15} />
 
@@ -231,7 +231,7 @@ function Footer() {
 
                 <div key={section}>
 
-                  <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-600">
+                  <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-100">
                     {section}
                   </p>
 
@@ -243,7 +243,7 @@ function Footer() {
                       <Link
                         key={link.label}
                         to={link.path}
-                        className="group flex w-fit items-center gap-2 font-body text-xs text-slate-400 transition-colors duration-300 hover:text-white"
+                        className="group flex w-fit items-center gap-2 font-body text-xs text-slate-300 transition-colors duration-300 hover:text-white"
                       >
 
                         <span>
@@ -279,7 +279,7 @@ function Footer() {
 
         <div className="flex flex-col gap-4 pt-7 sm:flex-row sm:items-center sm:justify-between">
 
-          <p className="font-body text-[12px] text-slate-600">
+          <p className="font-body text-[12px] text-slate-300">
             © {new Date().getFullYear()} GenData Tech. All rights reserved.
           </p>
 
@@ -288,14 +288,14 @@ function Footer() {
 
             <Link
               to="/privacy"
-              className="font-body text-[12px] text-slate-600 transition hover:text-slate-300"
+              className="font-body text-[12px] text-slate-300 transition hover:text-slate-300"
             >
               Privacy
             </Link>
 
             <Link
               to="/terms"
-              className="font-body text-[12px] text-slate-600 transition hover:text-slate-300"
+              className="font-body text-[12px] text-slate-300 transition hover:text-slate-300"
             >
               Terms
             </Link>

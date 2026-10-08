@@ -6,7 +6,7 @@ function Navbar() {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "AI Solutions", path: "/services" },
+    { name: "Services", path: "/services" },
     { name: "Products", path: "/products" },
     { name: "Training", path: "/training" },
     { name: "Blog", path: "/blog" },
@@ -30,7 +30,7 @@ function Navbar() {
               GenData
             </p>
 
-            <p className="mt-1 text-[9px] uppercase tracking-[0.45em] text-blue-200">
+            <p className="mt-1 text-[10px] uppercase tracking-[0.45em] text-blue-200">
               Tech
             </p>
           </div>

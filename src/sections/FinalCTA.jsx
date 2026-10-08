@@ -101,7 +101,7 @@ function FinalCTA() {
                 <span className="relative h-2 w-2 rounded-full bg-brand-accent" />
               </span>
 
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.25em] text-brand-accent">
+              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-brand-accent">
                 Start Something Intelligent
               </p>
             </motion.div>
@@ -122,7 +122,7 @@ function FinalCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="mt-6 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base"
+              className="mt-6 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base"
             >
               From AI models and intelligent automation to software,
               mobile applications and connected systems, let's explore
@@ -160,7 +160,7 @@ function FinalCTA() {
               transition={{ delay: 0.3 }}
               className="mt-9 flex flex-wrap items-center gap-4 sm:mt-10 sm:gap-5"
             >
-              <span className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+              <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-200">
                 Connect with us
               </span>
 
@@ -200,7 +200,7 @@ function FinalCTA() {
               {["AI Models", "Agentic AI", "AI Automation", "Software", "Apps", "IoT"].map((item) => (
                 <div key={item} className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-brand-accent" />
-                  <span className="font-body text-[9px] font-medium uppercase tracking-[0.12em] text-slate-400">
+                  <span className="font-body text-[12px] font-medium uppercase tracking-[0.12em] text-slate-400">
                     {item}
                   </span>
                 </div>

@@ -194,7 +194,7 @@ function AICapabilities() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-accent"
+              className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-accent"
             >
               Our AI Capabilities
             </motion.p>
@@ -215,7 +215,7 @@ function AICapabilities() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-xl font-body text-sm leading-7 text-slate-300 lg:justify-self-end lg:text-base"
+            className="max-w-xl font-body text-sm leading-7 text-slate-200 lg:justify-self-end lg:text-base"
           >
             From purpose-built AI models to autonomous agents and intelligent
             automation, we develop AI systems designed around specific
@@ -234,7 +234,7 @@ function AICapabilities() {
           >
             <div className="absolute right-0 top-0 h-50 w-50 rounded-full bg-brand-accent/8 blur-[90px] transition duration-500 group-hover:bg-brand-accent/12" />
             <div className="relative">
-              <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">01 / Models</span>
+              <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">01 / Models</span>
               <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">AI Model Development</h3>
               <p className="mt-4 max-w-xl font-body text-sm leading-7 text-slate-300">
                 Purpose-built machine learning and AI models engineered around
@@ -252,7 +252,7 @@ function AICapabilities() {
             whileHover={{ y: -4 }}
             className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-9"
           >
-            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">02 / Agents</span>
+            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">02 / Agents</span>
             <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">Agentic AI</h3>
             <p className="mt-4 font-body text-sm leading-7 text-slate-300">
               Intelligent agents capable of reasoning, interacting with tools
@@ -269,7 +269,7 @@ function AICapabilities() {
             whileHover={{ y: -4 }}
             className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 p-6 sm:p-7 lg:col-span-5 lg:p-9"
           >
-            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">03 / Automation</span>
+            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">03 / Automation</span>
             <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">AI Automation</h3>
             <p className="mt-4 font-body text-sm leading-7 text-slate-300">
               AI-driven workflows that connect information, decisions and
@@ -288,7 +288,7 @@ function AICapabilities() {
           >
             <div className="grid gap-4 sm:grid-cols-2 sm:items-center lg:gap-5">
               <div>
-                <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">04 / Custom Intelligence</span>
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-accent">04 / Custom Intelligence</span>
                 <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">Custom AI Solutions</h3>
                 <p className="mt-4 font-body text-sm leading-7 text-slate-300">
                   AI systems designed around your specific business requirements

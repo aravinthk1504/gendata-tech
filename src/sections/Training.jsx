@@ -74,7 +74,7 @@ function Training() {
                 y: 0,
               }}
               viewport={{ once: true }}
-              className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-primary"
+              className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary"
             >
               GenData Training
             </motion.p>
@@ -174,7 +174,7 @@ function Training() {
 
                 <div>
 
-                  <p className="font-body text-[8px] font-semibold uppercase tracking-[0.18em] text-brand-primary">
+                  <p className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-primary">
                     {program.category}
                   </p>
 
@@ -262,7 +262,7 @@ function Training() {
 
             <div>
 
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
+              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
                 Build practical skills
               </p>
 
@@ -273,7 +273,7 @@ function Training() {
               </h3>
 
 
-              <p className="mt-4 max-w-2xl font-body text-sm leading-7 text-slate-400">
+              <p className="mt-4 max-w-2xl font-body text-sm leading-7 text-slate-200">
                 Explore our training programs and find the technology path
                 that matches your learning goals.
               </p>

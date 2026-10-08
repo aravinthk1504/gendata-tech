@@ -219,7 +219,7 @@ function Products() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-primary sm:text-[11px] sm:tracking-[0.28em]"
+              className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary sm:text-[12px] sm:tracking-[0.28em]"
             >
               GenData Products
             </motion.p>
@@ -311,12 +311,12 @@ function Products() {
               transition={{ duration: 0.65, delay: index * 0.08 }}
               className="group flex flex-col rounded-[26px] border border-slate-200 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-8"
             >
-              <div className="flex items-start justify-between gap-4">
-                <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-primary">{product.number}</span>
-                <span className="text-right font-body text-[8px] font-semibold uppercase leading-4 tracking-[0.12em] text-slate-400">{product.category}</span>
+              <div className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2">
+                <span className="shrink-0 font-body text-[10px] font-semibold uppercase leading-4 tracking-[0.2em] text-brand-primary">{product.number}</span>
+                <span className="font-body text-[12px] font-semibold uppercase leading-4 tracking-[0.12em] text-slate-400">{product.category}</span>
               </div>
 
-              <h3 className="mt-6 font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950 sm:mt-7 sm:text-3xl">
+              <h3 className="mt-6 text-left font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950 sm:mt-7 sm:text-3xl">
                 GenData {product.title}
               </h3>
 

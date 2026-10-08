@@ -267,7 +267,7 @@ function TechnologyServices() {
       <div className="relative mx-auto max-w-350">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-primary">
+            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary">
               Technology Capabilities
             </motion.p>
             <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.08 }} className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-slate-950 sm:text-5xl lg:text-6xl">
@@ -276,7 +276,7 @@ function TechnologyServices() {
             </motion.h2>
           </div>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-md font-body text-sm leading-7 text-slate-500 lg:col-span-4 lg:justify-self-end lg:text-base">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-md font-body text-sm leading-7 text-slate-600 lg:col-span-4 lg:justify-self-end lg:text-base">
             From digital platforms to connected devices, our engineering capabilities turn ideas and intelligence into reliable, real-world technology.
           </motion.p>
         </div>
@@ -285,7 +285,7 @@ function TechnologyServices() {
           <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65 }} className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:col-span-2 lg:p-10">
             <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
               <div>
-                <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-primary">01 / Full Stack</span>
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">01 / Full Stack</span>
                 <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.03em] text-slate-950 lg:text-4xl">Full Stack Development</h3>
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-500">From static and multi-page websites to dynamic web applications, we build complete frontend and backend solutions with APIs, databases and scalable architecture.</p>
                 <div className="mt-7 flex flex-wrap gap-2">
@@ -300,7 +300,7 @@ function TechnologyServices() {
           </motion.article>
 
           <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65, delay: 0.08 }} className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9">
-            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-primary">02 / Software</span>
+            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">02 / Software</span>
             <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">Software Development</h3>
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">Custom software solutions engineered around business processes, operational requirements and evolving digital needs.</p>
             <SoftwareVisual />
@@ -308,7 +308,7 @@ function TechnologyServices() {
           </motion.article>
 
           <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65, delay: 0.14 }} className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9">
-            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-primary">03 / Mobile</span>
+            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">03 / Mobile</span>
             <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">App Development</h3>
             <p className="mt-4 font-body text-sm leading-7 text-slate-500">Modern mobile applications for Android and iOS designed around intuitive experiences, reliable performance and scalable integrations.</p>
             <AppVisual />
@@ -318,7 +318,7 @@ function TechnologyServices() {
           <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65, delay: 0.18 }} className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:col-span-2 lg:p-10">
             <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
               <div>
-                <span className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-primary">04 / Connected Systems</span>
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">04 / Connected Systems</span>
                 <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.03em] text-slate-950 lg:text-4xl">IoT Solutions</h3>
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-500">Connected IoT solutions combining sensors, devices, cloud platforms, automation and intelligent monitoring for real-world environments.</p>
                 <div className="mt-7 flex flex-wrap gap-2">

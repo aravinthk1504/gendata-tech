@@ -327,7 +327,7 @@ function Contact() {
                   transition={{
                     duration: 0.5,
                   }}
-                  className="font-body text-[10px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
+                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
                 >
                   Contact GenData Tech
                 </motion.p>
@@ -425,7 +425,7 @@ function Contact() {
                     </div>
 
                     <div>
-                      <p className="font-body text-[8px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-200">
                         Availability
                       </p>
 
@@ -446,7 +446,7 @@ function Contact() {
                     </div>
 
                     <div>
-                      <p className="font-body text-[8px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-200">
                         Response
                       </p>
 
@@ -467,12 +467,12 @@ function Contact() {
                     </div>
 
                     <div>
-                      <p className="font-body text-[8px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-200">
                         Presence
                       </p>
 
                       <p className="mt-1 font-body text-xs font-semibold text-white">
-                        2 Locations
+                        Coimbatore, India
                       </p>
                     </div>
 
@@ -1378,7 +1378,7 @@ function Contact() {
 
             <div>
 
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
+              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
                 Our Locations
               </p>
 
@@ -1465,7 +1465,7 @@ function Contact() {
 
             <div className="text-center">
 
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
+              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
                 Frequently Asked Questions
               </p>
 

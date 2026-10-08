@@ -98,7 +98,7 @@ function PipelineNode({ stage, index, shouldAnimate }) {
       </div>
 
       <div>
-        <p className="font-body text-[9px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
+        <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
           {stage.label}
         </p>
 
@@ -146,7 +146,7 @@ function IntelligenceProcess() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-body text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-accent"
+              className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-accent"
             >
               How We Build Intelligence
             </motion.p>
@@ -167,7 +167,7 @@ function IntelligenceProcess() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-md font-body text-sm leading-7 text-slate-300 lg:col-span-4 lg:justify-self-end lg:text-base"
+            className="max-w-md font-body text-sm leading-7 text-slate-200 lg:col-span-4 lg:justify-self-end lg:text-base"
           >
             Our AI development approach connects business understanding,
             data, models, reasoning and automation into one practical
@@ -213,7 +213,7 @@ function IntelligenceProcess() {
 
           <div className="relative grid gap-7 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8">
             <div>
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
+              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-brand-accent">
                 The Outcome
               </p>
 
