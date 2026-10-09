@@ -48,81 +48,85 @@ function Services() {
   ====================================================== */
 
   const services = [
-    {
-      icon: FiCpu,
-      title: "AI / ML Development",
-      description:
-        "Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements.",
-      useCases: [
-        "AI Models",
-        "Machine Learning",
-        "AI Automation",
-        "Agentic AI",
-      ],
-  
-    },
+  {
+    icon: FiCpu,
+    title: "AI / ML Development",
+    description:
+      "Custom AI models, machine learning solutions, intelligent automation and Agentic AI systems designed around real business requirements.",
+    useCases: [
+      "AI Models",
+      "Machine Learning",
+      "AI Automation",
+      "Agentic AI",
+    ],
+    path: "/services/ai-ml-development",
+  },
 
-    {
-      icon: FiLayers,
-      title: "Full Stack Development",
-      description:
-        "Complete application development covering frontend, backend, databases, APIs and system integration.",
-      useCases: [
-        "Web Applications",
-        "Dashboards",
-        "Business Platforms",
-      ],
-    },
+  {
+    icon: FiLayers,
+    title: "Full Stack Development",
+    description:
+      "Complete application development covering frontend, backend, databases, APIs and system integration.",
+    useCases: [
+      "Web Applications",
+      "Dashboards",
+      "Business Platforms",
+    ],
+    path: "/services/full-stack-development",
+  },
 
-    {
-      icon: FiMonitor,
-      title: "Web Development",
-      description:
-        "Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands.",
-      useCases: [
-        "Corporate Websites",
-        "Startup Websites",
-        "Product Websites",
-      ],
-    },
+  {
+    icon: FiMonitor,
+    title: "Web Development",
+    description:
+      "Modern, responsive and performance-focused websites designed for companies, startups, products and digital brands.",
+    useCases: [
+      "Corporate Websites",
+      "Startup Websites",
+      "Product Websites",
+    ],
+    path: "/services/web-development",
+  },
 
-    {
-      icon: FiCode,
-      title: "Software Development",
-      description:
-        "Custom software systems designed around business processes, internal operations and digital workflows.",
-      useCases: [
-        "Business Software",
-        "Internal Tools",
-        "Management Systems",
-      ],
-    },
+  {
+    icon: FiCode,
+    title: "Software Development",
+    description:
+      "Custom software systems designed around business processes, internal operations and digital workflows.",
+    useCases: [
+      "Business Software",
+      "Internal Tools",
+      "Management Systems",
+    ],
+    path: "/services/software-development",
+  },
 
-    {
-      icon: FiSmartphone,
-      title: "App Development",
-      description:
-        "Mobile applications designed around practical functionality, modern user experiences and connected services.",
-      useCases: [
-        "Android Apps",
-        "iOS Apps",
-        "Business Apps",
-      ],
-    },
+  {
+    icon: FiSmartphone,
+    title: "App Development",
+    description:
+      "Mobile applications designed around practical functionality, modern user experiences and connected services.",
+    useCases: [
+      "Android Apps",
+      "iOS Apps",
+      "Business Apps",
+    ],
+    path: "/services/app-development",
+  },
 
-    {
-      icon: FiCpu,
-      title: "IoT Solutions",
-      description:
-        "Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software.",
-      useCases: [
-        "Sensor Monitoring",
-        "Automation",
-        "Connected Systems",
-      ],
-    },
-  ]
-
+  {
+    icon: FiCpu,
+    title: "IoT Solutions",
+    description:
+      "Connected IoT systems combining sensors, devices, monitoring, automation and intelligent software.",
+    useCases: [
+      "Sensor Monitoring",
+      "Automation",
+      "Connected Systems",
+    ],
+    path: "/services/iot-solutions",
+  },
+]
 
   /* ======================================================
       OUTCOMES
@@ -924,17 +928,15 @@ const faqs = [
 
 
               {/* SERVICE LINK */}
+                <Link
+                  to={service.path}
+                  className="mt-6 inline-flex items-center gap-2 font-body text-xs font-semibold text-[#002DCC]"
+                >
+                  
+                  Explore Service
 
-              <Link
-                to="/contact"
-                className="mt-6 inline-flex items-center gap-2 font-body text-xs font-semibold text-[#002DCC]"
-              >
-                Explore Service
-
-                <FiArrowRight className="transition group-hover:translate-x-1" />
-
-              </Link>
-
+                  <FiArrowRight className="transition group-hover:translate-x-1" />
+                </Link>
             </div>
 
           </motion.div>
