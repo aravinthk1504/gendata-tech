@@ -1,13 +1,13 @@
-import Navbar from "../components/Navbar"
-import Hero from "../sections/Hero"
-import AICapabilities from "../sections/AICapabilities"
-import TechnologyServices from "../sections/TechnologyServices"
-import IntelligenceProcess from "../sections/IntelligenceProcess"
-import Products from "../sections/Products"
-import Training from "../sections/Training"
-import Insights from "../sections/Insights"
-import FinalCTA from "../sections/FinalCTA"
-import Footer from "../sections/Footer"
+import Navbar from "../components/Navbar";
+import Hero from "../sections/Hero";
+import AICapabilities from "../sections/AICapabilities";
+import TechnologyServices from "../sections/TechnologyServices";
+import IntelligenceProcess from "../sections/IntelligenceProcess";
+import Products from "../sections/Products";
+import Training from "../sections/Training";
+import Insights from "../sections/Insights";
+import FinalCTA from "../sections/FinalCTA";
+import Footer from "../sections/Footer";
 function Home() {
   return (
     <>
@@ -43,7 +43,6 @@ function Home() {
             <ProjectsSection />
         ======================================== */}
 
-
         {/* ========================================
             TRAINING
         ======================================== */}
@@ -52,17 +51,16 @@ function Home() {
         {/* ========================================
             BLOG / AI INSIGHTS
         ======================================== */}
-         <Insights />
+        <Insights />
         {/* ========================================
             CONTACT CTA
         ======================================== */}
         <FinalCTA />
 
         <Footer />
-        
       </main>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

@@ -1,52 +1,84 @@
-import { useRef, useState } from "react"
+import { useRef, useState } from "react";
+
 import {
-  motion,
   AnimatePresence,
+  motion,
   useInView,
   useReducedMotion,
-} from "motion/react"
+} from "motion/react";
 
 import {
   FiArrowRight,
+  FiCalendar,
   FiChevronDown,
   FiClock,
   FiMail,
   FiMapPin,
+  FiMessageCircle,
   FiPhone,
-  FiShield,
-  FiZap,
-} from "react-icons/fi"
+  FiSend,
+  FiTarget,
+} from "react-icons/fi";
 
-import { FaWhatsapp } from "react-icons/fa"
-
-import Navbar from "../components/Navbar"
-import Footer from "../sections/Footer"
-
+import Navbar from "../components/Navbar";
+import Footer from "../sections/Footer";
 
 function Contact() {
-  const [openFaq, setOpenFaq] = useState(0)
+  /* ======================================================
+      HERO ANIMATION
+  ====================================================== */
+
+  const heroRef = useRef(null);
+
+  const heroInView = useInView(heroRef, {
+    margin: "-10% 0px -10% 0px",
+  });
+
+  const reduceMotion = useReducedMotion();
+
+  const heroShouldAnimate = heroInView && !reduceMotion;
 
   /* ======================================================
       GOOGLE APPS SCRIPT
   ====================================================== */
 
-  const SCRIPT_URL = 
-        "https://script.google.com/macros/s/AKfycbwpxEsIut4yAWV6XLULaXRA8b0S2vE9sY_9etBKzzd4MK8kgGic2XPVk616ugu2KpHhiA/exec"
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxVozSQGWXBAMzhbqT2VGp5rvZWv4TpIusnQohWwT2XzaN_y8LVUiuEiem5Q8GVdbwgwQ/exec";
 
   /* ======================================================
-      HERO ANIMATION
+      OFFERING OPTIONS
   ====================================================== */
 
-  const heroRef = useRef(null)
+  const offeringOptions = {
+    Services: [
+      "AI / ML Development",
+      "Full Stack Development",
+      "Web Development",
+      "Software Development",
+      "App Development",
+      "IoT Solutions",
+    ],
 
-  const heroInView = useInView(heroRef, {
-    margin: "-10% 0px -10% 0px",
-  })
+    Products: ["GenData LMS", "CRM", "ERP", "Billing"],
 
-  const reduceMotion = useReducedMotion()
+    Training: [
+      "AI & Machine Learning",
+      "Data Science",
+      "Data Analytics",
+      "IoT Development",
+      "MERN Stack",
+      "DevOps",
+      "Python",
+      "Mobile App Development",
+    ],
 
-  const heroShouldAnimate = heroInView && !reduceMotion
-
+    "Other Enquiry": [
+      "General Enquiry",
+      "Partnership",
+      "Business Enquiry",
+      "Other",
+    ],
+  };
 
   /* ======================================================
       FORM STATE
@@ -56,193 +88,262 @@ function Contact() {
     name: "",
     email: "",
     phone: "",
-    company: "",
-    service: "",
-    project: "",
-  })
+    category: "",
+    offering: "",
+    message: "",
+  });
 
-  const [formStatus, setFormStatus] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-
-  /* ======================================================
-      LOCATIONS
-  ====================================================== */
-
-  const locations = [
-    {
-      type: "Primary Location",
-      name: "Coimbatore",
-      address: "Add your complete Coimbatore address here",
-      timing: "Mon - Sat, 10:00 AM - 6:00 PM",
-    },
-    {
-      type: "Second Location",
-      name: "Kovilpatti",
-      address:
-        "Annai Abirami Nagar, Subha Nagar Area, Kovilpatti - 628502",
-      timing: "Mon - Sat, 10:00 AM - 6:00 PM",
-    },
-  ]
-
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   /* ======================================================
-      FAQ
+      FORM HANDLERS
   ====================================================== */
 
-  const faqs = [
-    {
-      question: "What happens after I submit the enquiry form?",
-      answer:
-        "We review the information you share and identify the most relevant service or technical direction. We then contact you to understand the requirement in more detail and discuss the next step.",
-    },
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
 
-    {
-      question: "How quickly will GenData Tech respond?",
-      answer:
-        "Our target is to respond within 24 hours during our working days. Complex technical enquiries may require a little additional review before we provide a detailed response.",
-    },
-
-    {
-      question: "What services can I contact GenData Tech about?",
-      answer:
-        "You can contact us about AI model development, AI automation, Agentic AI, custom AI solutions, full-stack development, software development, mobile app development, IoT solutions, products and technology training.",
-    },
-
-    {
-      question:
-        "Can I discuss an idea before the project scope is finalized?",
-      answer:
-        "Yes. You do not need a complete specification before contacting us. Share the problem, idea or outcome you are considering and we can discuss the most suitable direction.",
-    },
-
-    {
-      question: "Can students contact you about training programs?",
-      answer:
-        "Yes. Training enquiries are welcome. Select Training in the enquiry form and mention the program or technology you are interested in.",
-    },
-  ]
-
-
-  /* ======================================================
-      FORM CHANGE
-  ====================================================== */
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((previous) => ({
+      ...previous,
       [name]: value,
-    }))
+    }));
 
-    if (formStatus) {
-      setFormStatus("")
+    if (submitStatus) {
+      setSubmitStatus(null);
     }
-  }
+  };
 
+  const handleCategoryChange = (event) => {
+    const category = event.target.value;
 
-  /* ======================================================
-      FORM SUBMIT
-  ====================================================== */
+    setFormData((previous) => ({
+      ...previous,
+      category,
+      offering: "",
+    }));
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+    if (submitStatus) {
+      setSubmitStatus(null);
+    }
+  };
 
-    if (!formData.service) {
-      setFormStatus("service")
-      return
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.category ||
+      !formData.offering ||
+      !formData.message
+    ) {
+      setSubmitStatus("error");
+      return;
     }
 
-    setIsSubmitting(true)
-    setFormStatus("")
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    /*
+      "service" is also sent so your existing
+      Google Apps Script can continue working.
+
+      Later we can update Google Sheets to store:
+      category
+      offering
+
+      as separate columns.
+    */
+
+    const submissionData = {
+      ...formData,
+
+      service: `${formData.category} - ${formData.offering}`,
+    };
 
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
 
-        /*
-          Google Apps Script redirects responses.
-          no-cors avoids the browser blocking the request.
-        */
         mode: "no-cors",
 
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
 
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim(),
-          company: formData.company.trim(),
-          service: formData.service,
-          project: formData.project.trim(),
-        }),
-      })
+        body: JSON.stringify(submissionData),
+      });
 
-      /*
-        Because we use no-cors, the browser receives
-        an opaque response and cannot read Google's
-        response body.
-
-        Actual saving + email sending is handled
-        inside Apps Script.
-      */
-
-      setFormStatus("success")
+      setSubmitStatus("success");
 
       setFormData({
         name: "",
         email: "",
         phone: "",
-        company: "",
-        service: "",
-        project: "",
-      })
+        category: "",
+        offering: "",
+        message: "",
+      });
     } catch (error) {
-      console.error("Contact form submission failed:", error)
+      console.error("Contact form error:", error);
 
-      setFormStatus("error")
+      setSubmitStatus("error");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
+  /* ======================================================
+      QUICK CONTACT
+  ====================================================== */
+
+  const quickContacts = [
+    {
+      icon: FiMessageCircle,
+      label: "WhatsApp",
+      value: "Chat with us",
+      href: "https://wa.me/918428683895",
+    },
+
+    {
+      icon: FiPhone,
+      label: "Call",
+      value: "+91 84286 83895",
+      href: "tel:+918428683895",
+    },
+
+    {
+      icon: FiMail,
+      label: "Email",
+      value: "gendatatechies@gmail.com",
+      href: "mailto:gendatatechies@gmail.com",
+    },
+
+    {
+      icon: FiCalendar,
+      label: "Schedule a Call",
+      value: "Request a suitable time",
+      href: "mailto:gendatatechies@gmail.com?subject=Schedule%20a%20Call%20with%20GenData%20Tech",
+    },
+  ];
+
+  /* ======================================================
+      RESPONSE PROCESS
+  ====================================================== */
+
+  const responseSteps = [
+    {
+      number: "01",
+      title: "You send your enquiry",
+      description: "Tell us what you are looking to build, explore or improve.",
+    },
+
+    {
+      number: "02",
+      title: "We review your requirement",
+      description:
+        "Our team reviews the requirement and understands the appropriate direction.",
+    },
+
+    {
+      number: "03",
+      title: "We respond with the next step",
+      description:
+        "We get back to you with the next discussion or action required.",
+    },
+  ];
+
+  /* ======================================================
+      FAQ
+  ====================================================== */
+
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const faqs = [
+    {
+      question: "How quickly will GenData Tech respond to my enquiry?",
+      answer:
+        "We aim to review enquiries and respond within 24 hours during our normal working days.",
+    },
+
+    {
+      question:
+        "Can I contact GenData Tech if I am not sure which service I need?",
+      answer:
+        "Yes. You can choose Other Enquiry or select the category that appears closest to your requirement. You can also explain the problem in the message field and we can help identify the appropriate direction.",
+    },
+
+    {
+      question: "Can I discuss an early-stage idea?",
+      answer:
+        "Yes. You do not need to have a complete technical specification before contacting us. You can share the idea, problem, users and expected outcome.",
+    },
+
+    {
+      question:
+        "Do I need a complete project specification before contacting you?",
+      answer:
+        "No. A basic explanation of the requirement is enough to begin the conversation. More detailed technical requirements can be discussed later.",
+    },
+
+    {
+      question: "Can I contact GenData Tech about products?",
+      answer:
+        "Yes. Select Products in the enquiry category and then choose the product you are interested in.",
+    },
+
+    {
+      question: "Can I contact GenData Tech about training programs?",
+      answer:
+        "Yes. Select Training and choose the program you are interested in. You can include any additional questions in the message field.",
+    },
+
+    {
+      question: "Can businesses contact GenData Tech for partnerships?",
+      answer:
+        "Yes. Select Other Enquiry and then Partnership or Business Enquiry to send the relevant details.",
+    },
+
+    {
+      question: "How can I contact GenData Tech directly?",
+      answer:
+        "You can contact us through WhatsApp, phone or email using the quick contact options on this page.",
+    },
+  ];
 
   return (
     <>
       <Navbar />
 
       <main className="overflow-hidden bg-white">
-
         {/* ======================================================
             HERO
         ====================================================== */}
 
         <section
           ref={heroRef}
-          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pt-36 lg:px-10 lg:pb-28 lg:pt-40"
+          className="relative overflow-hidden bg-[#030b18] px-6 pb-20 pt-32 sm:pb-24 sm:pt-36 lg:px-10 lg:pb-28 lg:pt-40"
         >
           {/* MAIN GLOW */}
 
           <motion.div
-            className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[170px]"
+            className="pointer-events-none absolute left-1/3 top-0 h-[430px] w-[760px] -translate-x-1/2 rounded-full bg-[#002DCC]/15 blur-[160px]"
             animate={
               heroShouldAnimate
                 ? {
-                    opacity: [0.6, 1, 0.6],
-                    scale: [1, 1.06, 1],
+                    opacity: [0.55, 0.9, 0.55],
+                    scale: [1, 1.04, 1],
                   }
                 : {
-                    opacity: 0.7,
+                    opacity: 0.65,
                     scale: 1,
                   }
             }
             transition={
               heroShouldAnimate
                 ? {
-                    duration: 7,
+                    duration: 8,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }
@@ -252,22 +353,21 @@ function Contact() {
             }
           />
 
-
           {/* SECONDARY GLOW */}
 
           <motion.div
-            className="pointer-events-none absolute -right-40 top-32 h-[350px] w-[350px] rounded-full bg-[#057CFA]/10 blur-[120px]"
+            className="pointer-events-none absolute -right-28 top-20 h-[320px] w-[320px] rounded-full bg-[#057CFA]/10 blur-[110px]"
             animate={
               heroShouldAnimate
                 ? {
-                    x: [0, -25, 0],
-                    y: [0, 20, 0],
-                    opacity: [0.5, 0.9, 0.5],
+                    x: [0, -18, 0],
+                    y: [0, 14, 0],
+                    opacity: [0.4, 0.75, 0.4],
                   }
                 : {
                     x: 0,
                     y: 0,
-                    opacity: 0.6,
+                    opacity: 0.5,
                   }
             }
             transition={
@@ -283,7 +383,6 @@ function Contact() {
             }
           />
 
-
           {/* GRID */}
 
           <div
@@ -293,20 +392,66 @@ function Contact() {
                 linear-gradient(rgba(5,124,250,0.35) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(5,124,250,0.35) 1px, transparent 1px)
               `,
-              backgroundSize: "70px 70px",
+              backgroundSize: "72px 72px",
             }}
           />
 
-
           <div className="relative mx-auto max-w-[1400px]">
+            <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+              {/* HERO COPY */}
 
-            <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
+              <div>
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                    y: 12,
+                  }}
+                  animate={
+                    heroInView
+                      ? {
+                          opacity: 1,
+                          y: 0,
+                        }
+                      : {
+                          opacity: 0,
+                          y: 12,
+                        }
+                  }
+                  transition={{
+                    duration: 0.5,
+                  }}
+                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
+                >
+                  Contact GenData Tech
+                </motion.p>
 
-              {/* ==================================================
-                  HERO LEFT
-              ================================================== */}
-
-              <div className="max-w-4xl">
+                <motion.h1
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={
+                    heroInView
+                      ? {
+                          opacity: 1,
+                          y: 0,
+                        }
+                      : {
+                          opacity: 0,
+                          y: 20,
+                        }
+                  }
+                  transition={{
+                    duration: 0.65,
+                    delay: 0.08,
+                  }}
+                  className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
+                >
+                  Let&apos;s build something
+                  <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
+                    intelligent together.
+                  </span>
+                </motion.h1>
 
                 <motion.p
                   initial={{
@@ -325,73 +470,17 @@ function Contact() {
                         }
                   }
                   transition={{
-                    duration: 0.5,
-                  }}
-                  className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-[#057CFA]"
-                >
-                  Contact GenData Tech
-                </motion.p>
-
-
-                <motion.h1
-                  initial={{
-                    opacity: 0,
-                    y: 25,
-                  }}
-                  animate={
-                    heroInView
-                      ? {
-                          opacity: 1,
-                          y: 0,
-                        }
-                      : {
-                          opacity: 0,
-                          y: 25,
-                        }
-                  }
-                  transition={{
-                    duration: 0.65,
-                    delay: 0.08,
-                  }}
-                  className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
-                >
-                  Let&apos;s build something
-
-                  <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
-                    intelligent together.
-                  </span>
-                </motion.h1>
-
-
-                <motion.p
-                  initial={{
-                    opacity: 0,
-                    y: 18,
-                  }}
-                  animate={
-                    heroInView
-                      ? {
-                          opacity: 1,
-                          y: 0,
-                        }
-                      : {
-                          opacity: 0,
-                          y: 18,
-                        }
-                  }
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.16,
+                    duration: 0.55,
+                    delay: 0.15,
                   }}
                   className="mt-7 max-w-2xl font-body text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
                 >
-                  Have an AI idea, digital product requirement or training
-                  enquiry? Tell us what you&apos;re looking for and our team
-                  will review it and get back to you.
+                  Tell us what you are looking to build, improve or explore.
+                  We&apos;ll review your requirement and help identify the right
+                  next step.
                 </motion.p>
 
-
-                {/* HERO INFO */}
+                {/* INFO */}
 
                 <motion.div
                   initial={{
@@ -410,82 +499,45 @@ function Contact() {
                         }
                   }
                   transition={{
-                    duration: 0.6,
-                    delay: 0.25,
+                    duration: 0.55,
+                    delay: 0.22,
                   }}
-                  className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-3"
+                  className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3"
                 >
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-500">
+                      Availability
+                    </p>
 
-                  {/* Availability */}
-
-                  <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
-
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#057CFA]/10 text-[#057CFA]">
-                      <FiClock />
-                    </div>
-
-                    <div>
-                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-200">
-                        Availability
-                      </p>
-
-                      <p className="mt-1 font-body text-xs font-semibold text-white">
-                        Mon – Sat
-                      </p>
-                    </div>
-
+                    <p className="mt-2 font-heading text-sm font-semibold text-white">
+                      Mon – Sat
+                    </p>
                   </div>
 
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-500">
+                      Response
+                    </p>
 
-                  {/* Response */}
-
-                  <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
-
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#057CFA]/10 text-[#057CFA]">
-                      <FiZap />
-                    </div>
-
-                    <div>
-                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-200">
-                        Response
-                      </p>
-
-                      <p className="mt-1 font-body text-xs font-semibold text-white">
-                        Within 24 hrs
-                      </p>
-                    </div>
-
+                    <p className="mt-2 font-heading text-sm font-semibold text-white">
+                      Within 24 hrs
+                    </p>
                   </div>
 
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                    <p className="font-body text-[9px] font-semibold uppercase tracking-[0.17em] text-slate-500">
+                      Presence
+                    </p>
 
-                  {/* Presence */}
-
-                  <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4">
-
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#057CFA]/10 text-[#057CFA]">
-                      <FiMapPin />
-                    </div>
-
-                    <div>
-                      <p className="font-body text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-200">
-                        Presence
-                      </p>
-
-                      <p className="mt-1 font-body text-xs font-semibold text-white">
-                        Coimbatore, India
-                      </p>
-                    </div>
-
+                    <p className="mt-2 font-heading text-sm font-semibold text-white">
+                      2 Locations
+                    </p>
                   </div>
-
                 </motion.div>
-
               </div>
 
-
-
               {/* ==================================================
-                  HERO RIGHT ANIMATION
+                  HERO VISUAL
               ================================================== */}
 
               <motion.div
@@ -505,16 +557,15 @@ function Contact() {
                       }
                 }
                 transition={{
-                  duration: 0.7,
-                  delay: 0.18,
+                  duration: 0.65,
+                  delay: 0.15,
                 }}
-                className="relative mx-auto hidden h-[360px] w-full max-w-[420px] items-center justify-center lg:flex"
+                className="relative mx-auto hidden h-[340px] w-full max-w-[430px] items-center justify-center lg:flex"
               >
-
-                {/* OUTER ORBIT */}
+                {/* OUTER */}
 
                 <motion.div
-                  className="absolute h-[300px] w-[300px] rounded-full border border-white/[0.06]"
+                  className="absolute h-[290px] w-[290px] rounded-full border border-white/[0.06]"
                   animate={
                     heroShouldAnimate
                       ? {
@@ -527,7 +578,7 @@ function Contact() {
                   transition={
                     heroShouldAnimate
                       ? {
-                          duration: 30,
+                          duration: 35,
                           repeat: Infinity,
                           ease: "linear",
                         }
@@ -536,16 +587,13 @@ function Contact() {
                         }
                   }
                 >
-
-                  <div className="absolute left-1/2 top-[-5px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
-
+                  <div className="absolute left-1/2 top-[-4px] h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_18px_rgba(5,124,250,0.9)]" />
                 </motion.div>
 
-
-                {/* INNER ORBIT */}
+                {/* INNER */}
 
                 <motion.div
-                  className="absolute h-[220px] w-[220px] rounded-full border border-[#057CFA]/15"
+                  className="absolute h-[205px] w-[205px] rounded-full border border-[#057CFA]/15"
                   animate={
                     heroShouldAnimate
                       ? {
@@ -558,7 +606,7 @@ function Contact() {
                   transition={
                     heroShouldAnimate
                       ? {
-                          duration: 22,
+                          duration: 25,
                           repeat: Infinity,
                           ease: "linear",
                         }
@@ -567,92 +615,84 @@ function Contact() {
                         }
                   }
                 >
-
-                  <div className="absolute bottom-[30px] right-[12px] h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.8)]" />
-
+                  <div className="absolute bottom-[18px] right-[14px] h-2 w-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(147,197,253,0.8)]" />
                 </motion.div>
 
-
-                {/* CONNECTORS */}
-
-                <div className="absolute h-px w-[260px] rotate-[28deg] bg-gradient-to-r from-transparent via-[#057CFA]/20 to-transparent" />
-
-                <div className="absolute h-px w-[250px] -rotate-[35deg] bg-gradient-to-r from-transparent via-[#057CFA]/20 to-transparent" />
-
-
-                {/* CENTER NODE */}
+                {/* CENTER */}
 
                 <motion.div
                   animate={
                     heroShouldAnimate
                       ? {
-                          scale: [1, 1.04, 1],
+                          scale: [1, 1.035, 1],
                         }
                       : {
                           scale: 1,
                         }
                   }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                  className="relative z-10 flex h-[130px] w-[130px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_70px_rgba(5,124,250,0.12)]"
+                  transition={{
+                    duration: 3,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="relative z-10 flex h-[125px] w-[125px] flex-col items-center justify-center rounded-full border border-[#057CFA]/25 bg-[#06152C] shadow-[0_0_60px_rgba(5,124,250,0.14)]"
                 >
+                  <FiMessageCircle className="text-xl text-[#057CFA]" />
 
-                  <span className="h-2 w-2 rounded-full bg-[#057CFA] shadow-[0_0_16px_rgba(5,124,250,1)]" />
-
-                  <span className="mt-3 font-heading text-sm font-semibold text-white">
-                    GenData Tech
-                  </span>
-
-                  <span className="mt-1 font-body text-[8px] uppercase tracking-[0.2em] text-slate-500">
+                  <span className="mt-2 font-heading text-sm font-semibold text-white">
                     Connect
                   </span>
 
+                  <span className="mt-1 font-body text-[7px] uppercase tracking-[0.18em] text-slate-500">
+                    GenData Tech
+                  </span>
                 </motion.div>
 
-
-                {/* MESSAGE */}
+                {/* NODES */}
 
                 <motion.div
                   animate={
                     heroShouldAnimate
                       ? {
-                          y: [0, -7, 0],
+                          y: [0, -6, 0],
                         }
                       : {
                           y: 0,
                         }
                   }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                  className="absolute right-1 top-10 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
+                  transition={{
+                    duration: 4,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute right-2 top-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-
                   <p className="font-body text-[9px] font-semibold text-slate-300">
-                    Message
+                    Services
                   </p>
-
                 </motion.div>
 
-
-                {/* AI */}
+                <motion.div
+                  animate={
+                    heroShouldAnimate
+                      ? {
+                          x: [0, 5, 0],
+                        }
+                      : {
+                          x: 0,
+                        }
+                  }
+                  transition={{
+                    duration: 4.5,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute bottom-12 left-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
+                >
+                  <p className="font-body text-[9px] font-semibold text-slate-300">
+                    Products
+                  </p>
+                </motion.div>
 
                 <motion.div
                   animate={
@@ -664,338 +704,406 @@ function Contact() {
                           y: 0,
                         }
                   }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                  className="absolute bottom-12 left-0 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
+                  transition={{
+                    duration: 5,
+                    repeat: heroShouldAnimate ? Infinity : 0,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute bottom-2 right-8 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
                 >
-
                   <p className="font-body text-[9px] font-semibold text-slate-300">
-                    AI Solutions
+                    Training
                   </p>
-
                 </motion.div>
-
-
-                {/* PRODUCTS */}
-
-                <motion.div
-                  animate={
-                    heroShouldAnimate
-                      ? {
-                          x: [0, 6, 0],
-                        }
-                      : {
-                          x: 0,
-                        }
-                  }
-                  transition={
-                    heroShouldAnimate
-                      ? {
-                          duration: 5.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }
-                      : {
-                          duration: 0.2,
-                        }
-                  }
-                  className="absolute bottom-2 right-10 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2 backdrop-blur-sm"
-                >
-
-                  <p className="font-body text-[9px] font-semibold text-slate-300">
-                    Products
-                  </p>
-
-                </motion.div>
-
               </motion.div>
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             CONTACT WORKSPACE
         ====================================================== */}
 
-        <section className="bg-[#F4F7FB] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-
+        <section className="bg-[#F4F7FB] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
           <div className="mx-auto max-w-[1400px]">
-
-            <div className="grid gap-5 lg:grid-cols-[0.98fr_1.02fr]">
-
-
+            <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-10">
               {/* ==================================================
-                  LEFT
+                  LEFT SIDE
               ================================================== */}
 
-              <div className="space-y-5">
-
-
+              <div className="space-y-6">
                 {/* QUICK CONTACT */}
 
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                  className="rounded-2xl border border-slate-200 bg-white p-5"
-                >
-
-                  <p className="font-body text-xs font-bold uppercase tracking-[0.16em] text-slate-900">
+                <div className="rounded-[28px] border border-slate-200 bg-white p-6 sm:p-7">
+                  <h2 className="font-body text-xs font-bold uppercase tracking-[0.16em] text-slate-900">
                     Quick Contact
+                  </h2>
+
+                  <p className="mt-3 font-body text-sm leading-7 text-slate-500">
+                    Choose the most convenient way to reach GenData Tech
+                    directly.
                   </p>
 
+                  <div className="mt-6 space-y-3">
+                    {quickContacts.map((item) => {
+                      const Icon = item.icon;
 
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                      return (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          target={
+                            item.label === "WhatsApp" ? "_blank" : undefined
+                          }
+                          rel={
+                            item.label === "WhatsApp" ? "noreferrer" : undefined
+                          }
+                          className="group flex items-center justify-between gap-4 rounded-2xl border border-slate-100 bg-[#F9FAFC] p-4 transition duration-300 hover:border-[#057CFA]/25 hover:bg-white hover:shadow-[0_12px_30px_rgba(15,23,42,0.05)]"
+                        >
+                          <div className="flex items-center gap-4">
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#002DCC] transition group-hover:bg-[#057CFA] group-hover:text-white">
+                              <Icon />
+                            </div>
 
+                            <div>
+                              <p className="font-body text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">
+                                {item.label}
+                              </p>
 
-                    {/* WHATSAPP */}
+                              <p className="mt-1 font-heading text-sm font-semibold text-slate-900">
+                                {item.value}
+                              </p>
+                            </div>
+                          </div>
 
-                    <a
-                      href="https://wa.me/918428683895"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 transition hover:border-[#057CFA] hover:bg-blue-50/40"
-                    >
-
-                      <div className="flex items-center gap-3">
-
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50 text-green-600">
-                          <FaWhatsapp className="text-sm" />
-                        </div>
-
-                        <div>
-                          <p className="font-heading text-sm font-semibold text-slate-950">
-                            WhatsApp
-                          </p>
-
-                          <p className="mt-0.5 font-body text-xs text-slate-500">
-                            Chat with us now
-                          </p>
-                        </div>
-
-                      </div>
-
-                      <FiArrowRight className="text-slate-400 transition group-hover:translate-x-1 group-hover:text-[#057CFA]" />
-
-                    </a>
-
-
-                    {/* CALL */}
-
-                    <a
-                      href="tel:+918428683895"
-                      className="group flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 transition hover:border-[#057CFA] hover:bg-blue-50/40"
-                    >
-
-                      <div className="flex items-center gap-3">
-
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#002DCC]">
-                          <FiPhone className="text-sm" />
-                        </div>
-
-                        <div>
-                          <p className="font-heading text-sm font-semibold text-slate-950">
-                            Call Us
-                          </p>
-
-                          <p className="mt-0.5 font-body text-xs text-slate-500">
-                            +91 84286 83895
-                          </p>
-                        </div>
-
-                      </div>
-
-                      <FiArrowRight className="text-slate-400 transition group-hover:translate-x-1 group-hover:text-[#057CFA]" />
-
-                    </a>
-
-
-                    {/* EMAIL */}
-
-                    <a
-                      href="mailto:gendatatechies@gmail.com"
-                      className="group flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 transition hover:border-[#057CFA] hover:bg-blue-50/40"
-                    >
-
-                      <div className="flex min-w-0 items-center gap-3">
-
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-50 text-red-500">
-                          <FiMail className="text-sm" />
-                        </div>
-
-                        <div className="min-w-0">
-
-                          <p className="font-heading text-sm font-semibold text-slate-950">
-                            Email
-                          </p>
-
-                          <p className="mt-0.5 truncate font-body text-xs text-slate-500">
-                            gendatatechies@gmail.com
-                          </p>
-
-                        </div>
-
-                      </div>
-
-                      <FiArrowRight className="ml-2 shrink-0 text-slate-400 transition group-hover:translate-x-1 group-hover:text-[#057CFA]" />
-
-                    </a>
-
-
-                    {/* SCHEDULE */}
-
-                    <a
-                      href="#"
-                      className="group flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 transition hover:border-[#057CFA] hover:bg-blue-50/40"
-                    >
-
-                      <div className="flex items-center gap-3">
-
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 text-amber-500">
-                          <FiClock className="text-sm" />
-                        </div>
-
-                        <div>
-
-                          <p className="font-heading text-sm font-semibold text-slate-950">
-                            Schedule a Call
-                          </p>
-
-                          <p className="mt-0.5 font-body text-xs text-slate-500">
-                            Discuss your requirement
-                          </p>
-
-                        </div>
-
-                      </div>
-
-                      <FiArrowRight className="text-slate-400 transition group-hover:translate-x-1 group-hover:text-[#057CFA]" />
-
-                    </a>
-
+                          <FiArrowRight className="shrink-0 text-slate-400 transition group-hover:translate-x-1 group-hover:text-[#057CFA]" />
+                        </a>
+                      );
+                    })}
                   </div>
-
-                </motion.div>
-
-
+                </div>
 
                 {/* RESPONSE PROMISE */}
 
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.05,
-                  }}
-                  className="rounded-2xl border border-slate-200 bg-white p-5"
-                >
+                <div className="rounded-[28px] border border-slate-200 bg-white p-6 sm:p-7">
+                  <h2 className="font-body text-xs font-bold uppercase tracking-[0.16em] text-slate-900">
+                    Our Response Promise
+                  </h2>
 
-                  <div className="flex items-center gap-2">
+                  <p className="mt-3 font-body text-sm leading-7 text-slate-500">
+                    A simple process from your first message to the next step.
+                  </p>
 
-                    <FiZap className="text-amber-500" />
-
-                    <p className="font-body text-xs font-bold uppercase tracking-[0.14em] text-slate-900">
-                      Our Response Promise
-                    </p>
-
-                  </div>
-
-
-                  <div className="mt-4 space-y-4">
-
-                    {[
-                      {
-                        number: "1",
-                        title: "You send your enquiry",
-                        text:
-                          "Submit the form, call, email or message us on WhatsApp.",
-                      },
-                      {
-                        number: "2",
-                        title: "Our team reviews your requirement",
-                        text:
-                          "We study the information and identify the right technical direction.",
-                      },
-                      {
-                        number: "3",
-                        title: "We respond with the next step",
-                        text:
-                          "We aim to contact you within 24 hours with questions or the next action.",
-                      },
-                    ].map((item) => (
-
-                      <div
-                        key={item.number}
-                        className="grid grid-cols-[28px_1fr] gap-3"
-                      >
-
-                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#057CFA] font-body text-xs font-semibold text-white">
-                          {item.number}
+                  <div className="mt-7 space-y-6">
+                    {responseSteps.map((step) => (
+                      <div key={step.number} className="flex gap-4">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 font-heading text-[9px] font-semibold text-[#002DCC]">
+                          {step.number}
                         </div>
-
 
                         <div>
-
                           <h3 className="font-heading text-sm font-semibold text-slate-950">
-                            {item.title}
+                            {step.title}
                           </h3>
 
-                          <p className="mt-1 font-body text-xs leading-5 text-slate-500">
-                            {item.text}
+                          <p className="mt-2 font-body text-xs leading-6 text-slate-500">
+                            {step.description}
                           </p>
-
                         </div>
-
                       </div>
-
                     ))}
-
                   </div>
-
-                </motion.div>
-
+                </div>
               </div>
 
-
-
               {/* ==================================================
-                  FORM
+                  ENQUIRY FORM
               ================================================== */}
+
+              <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10">
+                <div>
+                  <p className="font-body text-[11px] font-semibold uppercase tracking-[0.22em] text-[#002DCC]">
+                    Start Your Enquiry
+                  </p>
+
+                  <h2 className="mt-4 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
+                    Tell us what you&apos;re looking for.
+                  </h2>
+
+                  <p className="mt-4 max-w-2xl font-body text-sm leading-7 text-slate-500">
+                    Select the area you&apos;re interested in and provide a few
+                    details about your requirement.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                  {/* NAME + EMAIL */}
+
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="font-body text-xs font-semibold text-slate-700"
+                      >
+                        Full Name *
+                      </label>
+
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        autoComplete="name"
+                        placeholder="Your name"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 font-body text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="font-body text-xs font-semibold text-slate-700"
+                      >
+                        Email Address *
+                      </label>
+
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        autoComplete="email"
+                        placeholder="you@example.com"
+                        className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 font-body text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
+                      />
+                    </div>
+                  </div>
+
+                  {/* PHONE */}
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="font-body text-xs font-semibold text-slate-700"
+                    >
+                      Phone Number
+                    </label>
+
+                    <input
+                      id="phone"
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      autoComplete="tel"
+                      placeholder="+91"
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 font-body text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
+                    />
+                  </div>
+
+                  {/* ==================================================
+                      DEPENDENT DROPDOWNS
+                  ================================================== */}
+
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    {/* CATEGORY */}
+
+                    <div>
+                      <label
+                        htmlFor="category"
+                        className="font-body text-xs font-semibold text-slate-700"
+                      >
+                        What are you interested in? *
+                      </label>
+
+                      <div className="relative mt-2">
+                        <select
+                          id="category"
+                          name="category"
+                          value={formData.category}
+                          onChange={handleCategoryChange}
+                          required
+                          className="w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3.5 pr-11 font-body text-sm text-slate-700 outline-none transition focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
+                        >
+                          <option value="">Select a category</option>
+
+                          <option value="Services">Services</option>
+
+                          <option value="Products">Products</option>
+
+                          <option value="Training">Training</option>
+
+                          <option value="Other Enquiry">Other Enquiry</option>
+                        </select>
+
+                        <FiChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                      </div>
+                    </div>
+
+                    {/* OFFERING */}
+
+                    <div>
+                      <label
+                        htmlFor="offering"
+                        className="font-body text-xs font-semibold text-slate-700"
+                      >
+                        What are you looking for? *
+                      </label>
+
+                      <div className="relative mt-2">
+                        <select
+                          id="offering"
+                          name="offering"
+                          value={formData.offering}
+                          onChange={handleInputChange}
+                          disabled={!formData.category}
+                          required
+                          className={`w-full appearance-none rounded-xl border px-4 py-3.5 pr-11 font-body text-sm outline-none transition ${
+                            formData.category
+                              ? "border-slate-200 bg-white text-slate-700 focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
+                              : "cursor-not-allowed border-slate-100 bg-slate-50 text-slate-400"
+                          }`}
+                        >
+                          <option value="">
+                            {formData.category
+                              ? "Select an option"
+                              : "Select a category first"}
+                          </option>
+
+                          {formData.category &&
+                            offeringOptions[formData.category]?.map((item) => (
+                              <option key={item} value={item}>
+                                {item}
+                              </option>
+                            ))}
+                        </select>
+
+                        <FiChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* MESSAGE */}
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="font-body text-xs font-semibold text-slate-700"
+                    >
+                      Tell us about your requirement *
+                    </label>
+
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={6}
+                      placeholder="Describe what you would like to build, improve, learn or discuss..."
+                      className="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3.5 font-body text-sm leading-7 text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-4 focus:ring-blue-50"
+                    />
+                  </div>
+
+                  {/* FORM STATUS */}
+
+                  <AnimatePresence>
+                    {submitStatus === "success" && (
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          y: 5,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        exit={{
+                          opacity: 0,
+                          y: -5,
+                        }}
+                        className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3"
+                      >
+                        <p className="font-body text-xs font-medium leading-6 text-emerald-700">
+                          Your enquiry has been submitted. Our team will review
+                          it and get back to you.
+                        </p>
+                      </motion.div>
+                    )}
+
+                    {submitStatus === "error" && (
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          y: 5,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        exit={{
+                          opacity: 0,
+                          y: -5,
+                        }}
+                        className="rounded-xl border border-red-200 bg-red-50 px-4 py-3"
+                      >
+                        <p className="font-body text-xs font-medium leading-6 text-red-700">
+                          Please check the required fields and try again.
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* SUBMIT */}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC] disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Enquiry"}
+
+                    {!isSubmitting && (
+                      <FiSend className="transition group-hover:translate-x-1" />
+                    )}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================
+            LOCATIONS
+        ====================================================== */}
+
+        <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+              <div>
+                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
+                  Locations
+                </p>
+
+                <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
+                  Find GenData Tech.
+                </h2>
+              </div>
+
+              <div>
+                <p className="max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
+                  Our presence supports direct communication and collaboration
+                  across our technology, product and training activities.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {/* KOVILPATTI */}
 
               <motion.div
                 initial={{
@@ -1011,518 +1119,173 @@ function Contact() {
                 }}
                 transition={{
                   duration: 0.5,
-                  delay: 0.05,
                 }}
-                className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+                className="rounded-[26px] border border-slate-200 bg-[#F7F9FC] p-6 sm:p-7"
               >
-
-                {/* HEADER */}
-
-                <div className="bg-[#06152C] px-5 py-4 sm:px-6">
-
-                  <h2 className="font-heading text-lg font-semibold text-white sm:text-xl">
-                    Start Your Enquiry
-                  </h2>
-
-                  <p className="mt-1 font-body text-xs leading-5 text-slate-400 sm:text-sm">
-                    Describe your requirement and we&apos;ll respond within 24 hours.
-                  </p>
-
-
-                  <div className="mt-2.5 inline-flex items-center gap-2 rounded-md bg-emerald-500 px-2.5 py-1.5">
-
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
-
-                    <span className="font-body text-[11px] font-semibold text-white">
-                      Replies within 24h
-                    </span>
-
-                  </div>
-
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#002DCC]">
+                  <FiMapPin />
                 </div>
 
-
-
-                <form
-                  onSubmit={handleSubmit}
-                  className="p-4 sm:p-5"
-                >
-
-                  {/* SERVICE */}
-
-                  <div>
-
-                    <label className="font-body text-xs font-semibold text-slate-900">
-                      Select service
-                    </label>
-
-
-                    <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
-
-                      {[
-                        "AI / ML",
-                        "Web Development",
-                        "App Development",
-                        "Software",
-                        "IoT",
-                        "Training",
-                      ].map((service) => (
-
-                        <label
-                          key={service}
-                          className="cursor-pointer"
-                        >
-
-                          <input
-                            type="radio"
-                            name="service"
-                            value={service}
-                            checked={formData.service === service}
-                            onChange={handleChange}
-                            required
-                            className="peer sr-only"
-                          />
-
-                          <div className="flex min-h-[58px] items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-center font-body text-xs font-semibold text-slate-600 transition duration-200 hover:border-slate-300 peer-checked:border-[#057CFA] peer-checked:bg-blue-50 peer-checked:text-[#002DCC]">
-                            {service}
-                          </div>
-
-                        </label>
-
-                      ))}
-
-                    </div>
-
-
-                    <AnimatePresence>
-
-                      {formStatus === "service" && (
-
-                        <motion.p
-                          initial={{
-                            opacity: 0,
-                            y: -3,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            y: 0,
-                          }}
-                          exit={{
-                            opacity: 0,
-                          }}
-                          className="mt-2 font-body text-xs text-red-500"
-                        >
-                          Please select a service.
-                        </motion.p>
-
-                      )}
-
-                    </AnimatePresence>
-
-                  </div>
-
-
-
-                  {/* INPUTS */}
-
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
-
-
-                    {/* NAME */}
-
-                    <div>
-
-                      <label
-                        htmlFor="contact-name"
-                        className="font-body text-xs font-semibold text-slate-700"
-                      >
-                        Full Name
-                      </label>
-
-                      <input
-                        id="contact-name"
-                        name="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Enter your name"
-                        className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 font-body text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-2 focus:ring-blue-100"
-                      />
-
-                    </div>
-
-
-                    {/* EMAIL */}
-
-                    <div>
-
-                      <label
-                        htmlFor="contact-email"
-                        className="font-body text-xs font-semibold text-slate-700"
-                      >
-                        Email
-                      </label>
-
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="you@company.com"
-                        className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 font-body text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-2 focus:ring-blue-100"
-                      />
-
-                    </div>
-
-
-                    {/* PHONE */}
-
-                    <div>
-
-                      <label
-                        htmlFor="contact-phone"
-                        className="font-body text-xs font-semibold text-slate-700"
-                      >
-                        Phone
-                      </label>
-
-                      <input
-                        id="contact-phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="Phone number"
-                        className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 font-body text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-2 focus:ring-blue-100"
-                      />
-
-                    </div>
-
-
-                    {/* COMPANY */}
-
-                    <div>
-
-                      <label
-                        htmlFor="contact-company"
-                        className="font-body text-xs font-semibold text-slate-700"
-                      >
-                        Company
-                      </label>
-
-                      <input
-                        id="contact-company"
-                        name="company"
-                        type="text"
-                        value={formData.company}
-                        onChange={handleChange}
-                        placeholder="Startup / Company"
-                        className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 font-body text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-2 focus:ring-blue-100"
-                      />
-
-                    </div>
-
-                  </div>
-
-
-
-                  {/* PROJECT */}
-
-                  <div className="mt-3">
-
-                    <label
-                      htmlFor="contact-project"
-                      className="font-body text-xs font-semibold text-slate-700"
-                    >
-                      Project Details
-                    </label>
-
-                    <textarea
-                      id="contact-project"
-                      name="project"
-                      rows="4"
-                      required
-                      value={formData.project}
-                      onChange={handleChange}
-                      placeholder="Describe your project, goals, timeline or requirement..."
-                      className="mt-1.5 w-full resize-none rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 font-body text-sm leading-6 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#057CFA] focus:ring-2 focus:ring-blue-100"
-                    />
-
-                  </div>
-
-
-
-                  {/* PRIVACY */}
-
-                  <div className="mt-3 flex items-center gap-2">
-
-                    <FiShield className="shrink-0 text-sm text-slate-400" />
-
-                    <p className="font-body text-[11px] text-slate-500">
-                      Your information is used only to respond to your enquiry.
-                    </p>
-
-                  </div>
-
-
-
-                  {/* SUBMIT */}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#057CFA] px-5 py-3 font-body text-sm font-semibold text-white transition duration-200 hover:bg-[#002DCC] disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-
-                    {isSubmitting
-                      ? "Sending..."
-                      : "Send My Request"
-                    }
-
-                    {!isSubmitting && (
-                      <FiArrowRight />
-                    )}
-
-                  </button>
-
-
-
-                  {/* STATUS */}
-
-                  <AnimatePresence>
-
-                    {formStatus === "success" && (
-
-                      <motion.div
-                        initial={{
-                          opacity: 0,
-                          y: 5,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        exit={{
-                          opacity: 0,
-                        }}
-                        className="mt-3 rounded-lg border border-green-200 bg-green-50 px-4 py-3 font-body text-sm text-green-700"
-                      >
-                        Thank you. Your enquiry has been submitted. We&apos;ll get back to you soon.
-                      </motion.div>
-
-                    )}
-
-
-                    {formStatus === "error" && (
-
-                      <motion.div
-                        initial={{
-                          opacity: 0,
-                          y: 5,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        exit={{
-                          opacity: 0,
-                        }}
-                        className="mt-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 font-body text-sm text-red-700"
-                      >
-                        Something went wrong. Please try again or contact us through WhatsApp.
-                      </motion.div>
-
-                    )}
-
-                  </AnimatePresence>
-
-
-
-                  {/* WHATSAPP */}
-
-                  <a
-                    href="https://wa.me/918428683895"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-2.5 font-body text-xs font-semibold text-slate-600 transition hover:border-green-400 hover:text-green-600"
-                  >
-
-                    <FaWhatsapp />
-
-                    Or message us on WhatsApp
-
-                  </a>
-
-                </form>
-
+                <h3 className="mt-6 font-heading text-xl font-semibold text-slate-950">
+                  Kovilpatti
+                </h3>
+
+                <p className="mt-4 max-w-md font-body text-sm leading-7 text-slate-500">
+                  Annai Abirami Nagar,
+                  <br />
+                  Subha Nagar Area,
+                  <br />
+                  Kovilpatti – 628502
+                </p>
               </motion.div>
 
+              {/* COIMBATORE */}
+
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.08,
+                }}
+                className="rounded-[26px] border border-slate-200 bg-[#F7F9FC] p-6 sm:p-7"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#002DCC]">
+                  <FiMapPin />
+                </div>
+
+                <h3 className="mt-6 font-heading text-xl font-semibold text-slate-950">
+                  Coimbatore
+                </h3>
+
+                <p className="mt-4 max-w-md font-body text-sm leading-7 text-slate-500">
+                  Coimbatore,
+                  <br />
+                  Tamil Nadu,
+                  <br />
+                  India
+                </p>
+              </motion.div>
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
-            LOCATIONS
+            BEFORE YOU GET IN TOUCH
         ====================================================== */}
 
-        <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+        <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
+          <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[160px]" />
 
-          <div className="mx-auto max-w-[1400px]">
+          <div className="relative mx-auto max-w-[1400px]">
+            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+              <div>
+                <p className="font-body text-[11px] font-semibold uppercase tracking-[0.23em] text-[#057CFA]">
+                  Before You Get in Touch
+                </p>
 
-            <div>
+                <h2 className="mt-5 max-w-lg font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
+                  You don&apos;t need every detail figured out.
+                </h2>
+              </div>
 
-              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
-                Our Locations
-              </p>
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="rounded-[22px] border border-white/10 bg-white/[0.035] p-5">
+                  <FiTarget className="text-[#057CFA]" />
 
-              <h2 className="mt-4 font-heading text-3xl font-semibold tracking-[-0.035em] text-slate-950 sm:text-4xl">
-                Find GenData Tech.
-              </h2>
-
-            </div>
-
-
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-
-              {locations.map((location) => (
-
-                <motion.div
-                  key={location.name}
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                  className="rounded-[26px] border border-slate-200 bg-white p-6 sm:p-8"
-                >
-
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#002DCC]">
-                    <FiMapPin />
-                  </div>
-
-
-                  <p className="mt-6 font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
-                    {location.type}
-                  </p>
-
-
-                  <h3 className="mt-2 font-heading text-2xl font-semibold text-slate-950">
-                    {location.name}
+                  <h3 className="mt-4 font-heading text-sm font-semibold text-white">
+                    The Problem
                   </h3>
 
-
-                  <p className="mt-4 max-w-md font-body text-sm leading-7 text-slate-500">
-                    {location.address}
+                  <p className="mt-2 font-body text-xs leading-6 text-slate-400">
+                    Tell us what you are trying to solve, improve or create.
                   </p>
+                </div>
 
+                <div className="rounded-[22px] border border-white/10 bg-white/[0.035] p-5">
+                  <FiClock className="text-[#057CFA]" />
 
-                  <div className="mt-4 flex items-center gap-2 text-slate-500">
+                  <h3 className="mt-4 font-heading text-sm font-semibold text-white">
+                    Your Requirement
+                  </h3>
 
-                    <FiClock className="shrink-0 text-[#057CFA]" />
+                  <p className="mt-2 font-body text-xs leading-6 text-slate-400">
+                    Share the functionality, users or expected outcome you
+                    currently know.
+                  </p>
+                </div>
 
-                    <p className="font-body text-sm">
-                      {location.timing}
-                    </p>
+                <div className="rounded-[22px] border border-white/10 bg-white/[0.035] p-5">
+                  <FiArrowRight className="text-[#057CFA]" />
 
-                  </div>
+                  <h3 className="mt-4 font-heading text-sm font-semibold text-white">
+                    The Next Step
+                  </h3>
 
-                </motion.div>
-
-              ))}
-
+                  <p className="mt-2 font-body text-xs leading-6 text-slate-400">
+                    We can help identify an appropriate technology or direction
+                    from there.
+                  </p>
+                </div>
+              </div>
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             FAQ
         ====================================================== */}
 
         <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
-
-          <div className="mx-auto max-w-[950px]">
-
-
-            <div className="text-center">
-
-              <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="font-body text-[11px] font-semibold uppercase tracking-[0.23em] text-[#002DCC]">
                 Frequently Asked Questions
               </p>
 
-
-              <h2 className="mt-4 font-heading text-3xl font-semibold tracking-[-0.035em] text-slate-950 sm:text-4xl">
-                Before you get in touch.
+              <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
+                Questions before you contact us.
               </h2>
 
+              <p className="mt-5 font-body text-sm leading-7 text-slate-500 sm:text-base">
+                A few answers that may help before starting your enquiry.
+              </p>
             </div>
 
-
-
-            <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
-
+            <div className="mt-12 grid items-start gap-x-10 lg:grid-cols-2">
               {faqs.map((faq, index) => {
-
-                const isOpen =
-                  openFaq === index
-
+                const isOpen = openFaq === index;
 
                 return (
-
-                  <div key={faq.question}>
-
+                  <div key={faq.question} className="border-b border-slate-200">
                     <button
                       type="button"
-                      onClick={() =>
-                        setOpenFaq(
-                          isOpen
-                            ? null
-                            : index
-                        )
-                      }
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
+                      aria-expanded={isOpen}
                       className="flex w-full items-center justify-between gap-6 py-6 text-left"
                     >
-
-                      <span className="font-heading text-sm font-semibold text-slate-900 sm:text-base">
+                      <span className="font-heading text-sm font-semibold leading-6 text-slate-900 sm:text-base">
                         {faq.question}
                       </span>
 
-
                       <FiChevronDown
                         className={`shrink-0 text-slate-500 transition duration-300 ${
-                          isOpen
-                            ? "rotate-180"
-                            : ""
+                          isOpen ? "rotate-180" : ""
                         }`}
                       />
-
                     </button>
 
-
-
                     <AnimatePresence>
-
                       {isOpen && (
-
                         <motion.div
                           initial={{
                             height: 0,
@@ -1541,35 +1304,23 @@ function Contact() {
                           }}
                           className="overflow-hidden"
                         >
-
-                          <p className="max-w-3xl pb-6 font-body text-sm leading-7 text-slate-500">
+                          <p className="max-w-xl pb-6 font-body text-sm leading-7 text-slate-500">
                             {faq.answer}
                           </p>
-
                         </motion.div>
-
                       )}
-
                     </AnimatePresence>
-
                   </div>
-
-                )
-
+                );
               })}
-
             </div>
-
           </div>
-
         </section>
-
       </main>
 
       <Footer />
     </>
-  )
+  );
 }
 
-
-export default Contact
+export default Contact;

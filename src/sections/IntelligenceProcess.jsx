@@ -1,5 +1,5 @@
-import { motion, useInView, useReducedMotion } from "motion/react"
-import { useRef } from "react"
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { useRef } from "react";
 
 const stages = [
   {
@@ -44,7 +44,7 @@ const stages = [
     description:
       "The final AI system is integrated into the required product or workflow with reliability and scalability in mind.",
   },
-]
+];
 
 function PipelineNode({ stage, index, shouldAnimate }) {
   return (
@@ -84,7 +84,9 @@ function PipelineNode({ stage, index, shouldAnimate }) {
         {index !== stages.length - 1 && (
           <div className="relative ml-4 h-px flex-1 overflow-hidden bg-white/8 lg:hidden">
             <motion.span
-              animate={shouldAnimate ? { x: ["-100%", "250%"] } : { x: "-100%" }}
+              animate={
+                shouldAnimate ? { x: ["-100%", "250%"] } : { x: "-100%" }
+              }
               transition={{
                 duration: 2.5,
                 delay: index * 0.3,
@@ -111,14 +113,14 @@ function PipelineNode({ stage, index, shouldAnimate }) {
         </p>
       </div>
     </motion.article>
-  )
+  );
 }
 
 function IntelligenceProcess() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { margin: "-10% 0px -10% 0px" })
-  const reduceMotion = useReducedMotion()
-  const shouldAnimate = isInView && !reduceMotion
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { margin: "-10% 0px -10% 0px" });
+  const reduceMotion = useReducedMotion();
+  const shouldAnimate = isInView && !reduceMotion;
 
   return (
     <section
@@ -159,7 +161,9 @@ function IntelligenceProcess() {
               className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
             >
               From challenge
-              <span className="block text-slate-400">to intelligent system.</span>
+              <span className="block text-slate-400">
+                to intelligent system.
+              </span>
             </motion.h2>
           </div>
 
@@ -169,9 +173,9 @@ function IntelligenceProcess() {
             viewport={{ once: true }}
             className="max-w-md font-body text-sm leading-7 text-slate-200 lg:col-span-4 lg:justify-self-end lg:text-base"
           >
-            Our AI development approach connects business understanding,
-            data, models, reasoning and automation into one practical
-            engineering process.
+            Our AI development approach connects business understanding, data,
+            models, reasoning and automation into one practical engineering
+            process.
           </motion.p>
         </div>
 
@@ -218,8 +222,8 @@ function IntelligenceProcess() {
               </p>
 
               <h3 className="mt-4 max-w-3xl font-heading text-2xl font-semibold leading-snug text-white sm:text-3xl">
-                AI designed around the problem,
-                not technology for technology's sake.
+                AI designed around the problem, not technology for technology's
+                sake.
               </h3>
             </div>
 
@@ -231,7 +235,10 @@ function IntelligenceProcess() {
                       ? { scale: [1, 1.5, 1], opacity: [1, 0.4, 1] }
                       : { scale: 1, opacity: 1 }
                   }
-                  transition={{ duration: 2.5, repeat: shouldAnimate ? Infinity : 0 }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: shouldAnimate ? Infinity : 0,
+                  }}
                   className="h-2.5 w-2.5 rounded-full bg-brand-accent shadow-[0_0_18px_rgba(5,124,250,0.9)]"
                 />
               </div>
@@ -249,7 +256,7 @@ function IntelligenceProcess() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
-export default IntelligenceProcess
+export default IntelligenceProcess;

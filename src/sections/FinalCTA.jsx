@@ -1,6 +1,6 @@
-import { useRef } from "react"
-import { motion, useInView, useReducedMotion } from "motion/react"
-import { Link } from "react-router-dom"
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { Link } from "react-router-dom";
 
 import {
   FaGithub,
@@ -8,7 +8,7 @@ import {
   FaFacebookF,
   FaWhatsapp,
   FaLinkedinIn,
-} from "react-icons/fa"
+} from "react-icons/fa";
 
 const socialLinks = [
   { name: "GitHub", icon: FaGithub, href: "#" },
@@ -16,16 +16,19 @@ const socialLinks = [
   { name: "Facebook", icon: FaFacebookF, href: "#" },
   { name: "WhatsApp", icon: FaWhatsapp, href: "#" },
   { name: "LinkedIn", icon: FaLinkedinIn, href: "#" },
-]
+];
 
 function FinalCTA() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { margin: "-10% 0px -10% 0px" })
-  const reduceMotion = useReducedMotion()
-  const shouldAnimate = isInView && !reduceMotion
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { margin: "-10% 0px -10% 0px" });
+  const reduceMotion = useReducedMotion();
+  const shouldAnimate = isInView && !reduceMotion;
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-white px-6 py-16 sm:py-20 lg:px-10 lg:py-28"
+    >
       <div className="mx-auto max-w-350">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -40,7 +43,11 @@ function FinalCTA() {
                 ? { x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.15, 1] }
                 : { x: 0, y: 0, scale: 1 }
             }
-            transition={{ duration: 14, repeat: shouldAnimate ? Infinity : 0, ease: "easeInOut" }}
+            transition={{
+              duration: 14,
+              repeat: shouldAnimate ? Infinity : 0,
+              ease: "easeInOut",
+            }}
             className="pointer-events-none absolute -left-30 -top-40 h-100 w-100 rounded-full bg-brand-primary/25 blur-[120px]"
           />
 
@@ -50,7 +57,11 @@ function FinalCTA() {
                 ? { x: [0, -40, 0], y: [0, -30, 0], scale: [1, 1.15, 1] }
                 : { x: 0, y: 0, scale: 1 }
             }
-            transition={{ duration: 16, repeat: shouldAnimate ? Infinity : 0, ease: "easeInOut" }}
+            transition={{
+              duration: 16,
+              repeat: shouldAnimate ? Infinity : 0,
+              ease: "easeInOut",
+            }}
             className="pointer-events-none absolute -bottom-40 -right-20 h-110 w-110 rounded-full bg-brand-accent/15 blur-[130px]"
           />
 
@@ -67,7 +78,11 @@ function FinalCTA() {
 
           <motion.div
             animate={shouldAnimate ? { rotate: 360 } : { rotate: 0 }}
-            transition={{ duration: 35, repeat: shouldAnimate ? Infinity : 0, ease: "linear" }}
+            transition={{
+              duration: 35,
+              repeat: shouldAnimate ? Infinity : 0,
+              ease: "linear",
+            }}
             className="pointer-events-none absolute -right-20 top-1/2 hidden h-80 w-80 -translate-y-1/2 rounded-full border border-dashed border-white/[0.06] lg:block"
           >
             <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent shadow-[0_0_20px_rgba(5,124,250,1)]" />
@@ -75,7 +90,11 @@ function FinalCTA() {
 
           <motion.div
             animate={shouldAnimate ? { rotate: -360 } : { rotate: 0 }}
-            transition={{ duration: 25, repeat: shouldAnimate ? Infinity : 0, ease: "linear" }}
+            transition={{
+              duration: 25,
+              repeat: shouldAnimate ? Infinity : 0,
+              ease: "linear",
+            }}
             className="pointer-events-none absolute right-5 top-1/2 hidden h-52 w-52 -translate-y-1/2 rounded-full border border-white/[0.05] lg:block"
           >
             <span className="absolute bottom-[10%] left-[10%] h-1.5 w-1.5 rounded-full bg-cyan-300" />
@@ -95,7 +114,10 @@ function FinalCTA() {
                       ? { scale: [1, 2.2, 1], opacity: [0.8, 0, 0.8] }
                       : { scale: 1, opacity: 0.8 }
                   }
-                  transition={{ duration: 2.5, repeat: shouldAnimate ? Infinity : 0 }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: shouldAnimate ? Infinity : 0,
+                  }}
                   className="absolute h-full w-full rounded-full bg-brand-accent"
                 />
                 <span className="relative h-2 w-2 rounded-full bg-brand-accent" />
@@ -124,9 +146,9 @@ function FinalCTA() {
               transition={{ delay: 0.15 }}
               className="mt-6 max-w-2xl font-body text-sm leading-7 text-slate-200 sm:text-base"
             >
-              From AI models and intelligent automation to software,
-              mobile applications and connected systems, let's explore
-              how technology can turn your idea into a practical solution.
+              From AI models and intelligent automation to software, mobile
+              applications and connected systems, let's explore how technology
+              can turn your idea into a practical solution.
             </motion.p>
 
             <motion.div
@@ -141,7 +163,9 @@ function FinalCTA() {
                 className="group inline-flex items-center gap-3 rounded-full bg-brand-accent px-6 py-3.5 font-body text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500"
               >
                 Start a Conversation
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
 
               <Link
@@ -149,7 +173,9 @@ function FinalCTA() {
                 className="group inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/[0.04] px-6 py-3.5 font-body text-xs font-semibold text-slate-200 backdrop-blur-md transition duration-300 hover:border-white/25 hover:bg-white/[0.08]"
               >
                 Explore Training
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             </motion.div>
 
@@ -166,7 +192,7 @@ function FinalCTA() {
 
               <div className="flex items-center gap-2">
                 {socialLinks.map((social) => {
-                  const Icon = social.icon
+                  const Icon = social.icon;
 
                   return (
                     <motion.a
@@ -180,10 +206,13 @@ function FinalCTA() {
                       whileTap={{ scale: 0.95 }}
                       className="group/social relative flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 backdrop-blur-md transition duration-300 hover:border-brand-accent/40 hover:bg-brand-accent/10 hover:text-white"
                     >
-                      <Icon size={16} className="relative z-10 transition-transform duration-300 group-hover/social:scale-110" />
+                      <Icon
+                        size={16}
+                        className="relative z-10 transition-transform duration-300 group-hover/social:scale-110"
+                      />
                       <span className="pointer-events-none absolute inset-0 rounded-full bg-brand-accent/10 opacity-0 blur-md transition-opacity duration-300 group-hover/social:opacity-100" />
                     </motion.a>
-                  )
+                  );
                 })}
               </div>
             </motion.div>
@@ -197,7 +226,14 @@ function FinalCTA() {
             className="relative z-10 mt-12 border-t border-white/[0.08] pt-6 sm:mt-14 sm:pt-7"
           >
             <div className="flex flex-wrap gap-x-8 gap-y-3">
-              {["AI Models", "Agentic AI", "AI Automation", "Software", "Apps", "IoT"].map((item) => (
+              {[
+                "AI Models",
+                "Agentic AI",
+                "AI Automation",
+                "Software",
+                "Apps",
+                "IoT",
+              ].map((item) => (
                 <div key={item} className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-brand-accent" />
                   <span className="font-body text-[12px] font-medium uppercase tracking-[0.12em] text-slate-400">
@@ -210,7 +246,7 @@ function FinalCTA() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
-export default FinalCTA
+export default FinalCTA;

@@ -1,61 +1,57 @@
-import { useEffect, useState } from "react"
-import { motion, useMotionValue, useSpring } from "motion/react"
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 
 function CustomCursor() {
-  const [hovering, setHovering] = useState(false)
-  const [visible, setVisible] = useState(false)
+  const [hovering, setHovering] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const mouseX = useMotionValue(-100)
-  const mouseY = useMotionValue(-100)
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
 
   const springConfig = {
     damping: 28,
     stiffness: 350,
     mass: 0.5,
-  }
+  };
 
-  const ringX = useSpring(mouseX, springConfig)
-  const ringY = useSpring(mouseY, springConfig)
+  const ringX = useSpring(mouseX, springConfig);
+  const ringY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
     const moveCursor = (event) => {
-      mouseX.set(event.clientX)
-      mouseY.set(event.clientY)
-      setVisible(true)
-    }
+      mouseX.set(event.clientX);
+      mouseY.set(event.clientY);
+      setVisible(true);
+    };
 
     const handleMouseOver = (event) => {
       const target = event.target.closest(
-        "a, button, [data-cursor='interactive']"
-      )
+        "a, button, [data-cursor='interactive']",
+      );
 
-      setHovering(Boolean(target))
-    }
+      setHovering(Boolean(target));
+    };
 
     const handleMouseLeave = () => {
-      setVisible(false)
-    }
+      setVisible(false);
+    };
 
-    window.addEventListener("mousemove", moveCursor)
-    document.addEventListener("mouseover", handleMouseOver)
-    document.documentElement.addEventListener(
-      "mouseleave",
-      handleMouseLeave
-    )
+    window.addEventListener("mousemove", moveCursor);
+    document.addEventListener("mouseover", handleMouseOver);
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor)
-      document.removeEventListener("mouseover", handleMouseOver)
+      window.removeEventListener("mousemove", moveCursor);
+      document.removeEventListener("mouseover", handleMouseOver);
       document.documentElement.removeEventListener(
         "mouseleave",
-        handleMouseLeave
-      )
-    }
-  }, [mouseX, mouseY])
+        handleMouseLeave,
+      );
+    };
+  }, [mouseX, mouseY]);
 
   return (
     <div className="pointer-events-none fixed inset-0 z-9999 hidden md:block">
-
       {/* Main cursor dot */}
       <motion.div
         className="absolute h-2 w-2 rounded-full bg-white mix-blend-difference"
@@ -89,9 +85,8 @@ function CustomCursor() {
           opacity: visible ? 1 : 0,
         }}
       />
-
     </div>
-  )
+  );
 }
 
-export default CustomCursor
+export default CustomCursor;

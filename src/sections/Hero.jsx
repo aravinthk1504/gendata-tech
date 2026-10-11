@@ -1,17 +1,20 @@
-import { useRef } from "react"
-import { motion, useInView, useReducedMotion } from "motion/react"
-import { Link } from "react-router-dom"
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { Link } from "react-router-dom";
 
-import AnimatedBackground from "./hero/AnimatedBackground"
+import AnimatedBackground from "./hero/AnimatedBackground";
 
 function Hero() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { margin: "-10% 0px -10% 0px" })
-  const reduceMotion = useReducedMotion()
-  const shouldAnimate = isInView && !reduceMotion
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { margin: "-10% 0px -10% 0px" });
+  const reduceMotion = useReducedMotion();
+  const shouldAnimate = isInView && !reduceMotion;
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-screen items-center overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-screen items-center overflow-hidden"
+    >
       <AnimatedBackground />
 
       <div className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 select-none lg:block">
@@ -56,9 +59,8 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.18 }}
             className="mx-auto mt-6 max-w-2xl font-body text-base leading-8 text-slate-300 sm:text-lg"
           >
-            GenData Tech develops intelligent AI models, agentic systems
-            and automation solutions engineered around real-world
-            challenges.
+            GenData Tech develops intelligent AI models, agentic systems and
+            automation solutions engineered around real-world challenges.
           </motion.p>
 
           <motion.div
@@ -72,7 +74,9 @@ function Hero() {
               className="group inline-flex min-w-55 items-center justify-center gap-3 rounded-full bg-brand-accent px-7 py-4 font-body text-sm font-semibold text-white shadow-[0_12px_40px_rgba(5,124,250,0.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500"
             >
               Explore AI Capabilities
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </Link>
 
             <Link
@@ -89,16 +93,18 @@ function Hero() {
             transition={{ duration: 1, delay: 0.55 }}
             className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-4 border-t border-white/8 pt-5 sm:mt-12"
           >
-            {["AI Models", "Agentic AI", "AI Automation", "Custom AI"].map((item, index) => (
-              <div key={item} className="flex items-center gap-3">
-                {index !== 0 && (
-                  <span className="hidden h-1 w-1 rounded-full bg-brand-accent sm:block" />
-                )}
-                <span className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-slate-200">
-                  {item}
-                </span>
-              </div>
-            ))}
+            {["AI Models",  "Custom AI", "Software", "Apps", "IoT Solutions", "IT Training"].map(
+              (item, index) => (
+                <div key={item} className="flex items-center gap-3">
+                  {index !== 0 && (
+                    <span className="hidden h-1 w-1 rounded-full bg-brand-accent sm:block" />
+                  )}
+                  <span className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-slate-200">
+                    {item}
+                  </span>
+                </div>
+              ),
+            )}
           </motion.div>
         </div>
 
@@ -128,7 +134,7 @@ function Hero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

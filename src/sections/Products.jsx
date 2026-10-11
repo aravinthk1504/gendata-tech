@@ -1,5 +1,5 @@
-import { motion } from "motion/react"
-import { Link } from "react-router-dom"
+import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -29,7 +29,7 @@ const products = [
       "A streamlined billing platform for invoices, payments, customer records and financial visibility.",
     features: ["Invoices", "Payments", "Reports"],
   },
-]
+];
 
 function LMSDashboard() {
   return (
@@ -116,7 +116,9 @@ function LMSDashboard() {
               <div className="flex h-24 items-center justify-center rounded-xl border border-white/8 bg-white/3 sm:h-30">
                 <div className="relative flex h-15 w-15 items-center justify-center rounded-full border-[6px] border-white/8 sm:h-17 sm:w-17">
                   <div className="absolute inset-[-6px] rounded-full border-[6px] border-transparent border-r-brand-accent border-t-brand-accent" />
-                  <span className="font-heading text-[10px] font-semibold text-white sm:text-xs">84%</span>
+                  <span className="font-heading text-[10px] font-semibold text-white sm:text-xs">
+                    84%
+                  </span>
                 </div>
               </div>
             </div>
@@ -124,12 +126,12 @@ function LMSDashboard() {
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 function ProductVisual({ type }) {
   if (type === "crm") {
-    const bars = [45, 68, 55, 86]
+    const bars = [45, 68, 55, 86];
     return (
       <div className="relative mt-6 h-34 overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] p-4 sm:mt-8 sm:h-40 sm:p-5">
         <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cyan-100/70 blur-[45px]" />
@@ -142,14 +144,19 @@ function ProductVisual({ type }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: index * 0.08 }}
                 className={`w-full rounded-t-md ${
-                  ["bg-[#057CFA]", "bg-cyan-400", "bg-violet-500", "bg-emerald-400"][index]
+                  [
+                    "bg-[#057CFA]",
+                    "bg-cyan-400",
+                    "bg-violet-500",
+                    "bg-emerald-400",
+                  ][index]
                 }`}
               />
             </div>
           ))}
         </div>
       </div>
-    )
+    );
   }
 
   if (type === "erp") {
@@ -157,7 +164,9 @@ function ProductVisual({ type }) {
       <div className="relative mt-6 flex h-32 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFD] sm:mt-8 sm:h-36">
         <div className="absolute h-24 w-24 rounded-full border border-dashed border-brand-accent/30" />
         <div className="relative z-10 flex h-15 w-15 items-center justify-center rounded-2xl bg-brand-primary shadow-[0_12px_30px_rgba(0,45,204,0.18)] sm:h-16 sm:w-16">
-          <span className="font-heading text-[9px] font-semibold text-white">ERP</span>
+          <span className="font-heading text-[9px] font-semibold text-white">
+            ERP
+          </span>
         </div>
         {["HR", "OPS", "FIN", "DATA"].map((item, index) => {
           const positions = [
@@ -165,7 +174,7 @@ function ProductVisual({ type }) {
             "right-[10%] top-[18%]",
             "bottom-[12%] left-[15%]",
             "bottom-[12%] right-[15%]",
-          ]
+          ];
           return (
             <div
               key={item}
@@ -173,10 +182,10 @@ function ProductVisual({ type }) {
             >
               {item}
             </div>
-          )
+          );
         })}
       </div>
-    )
+    );
   }
 
   return (
@@ -192,24 +201,40 @@ function ProductVisual({ type }) {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.06 }}
               className={`flex-1 rounded-t-sm ${
-                ["bg-blue-400", "bg-cyan-400", "bg-violet-400", "bg-blue-500", "bg-cyan-500", "bg-emerald-400"][index]
+                [
+                  "bg-blue-400",
+                  "bg-cyan-400",
+                  "bg-violet-400",
+                  "bg-blue-500",
+                  "bg-cyan-500",
+                  "bg-emerald-400",
+                ][index]
               }`}
             />
           ))}
         </div>
         <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-3">
-          <span className="rounded-full bg-emerald-50 px-2 py-1 text-center font-body text-[6px] font-semibold text-emerald-600">Paid</span>
-          <p className="font-heading text-[10px] font-semibold text-slate-800">INV-2048</p>
-          <p className="font-heading text-[9px] font-semibold text-slate-800">₹12,450</p>
+          <span className="rounded-full bg-emerald-50 px-2 py-1 text-center font-body text-[6px] font-semibold text-emerald-600">
+            Paid
+          </span>
+          <p className="font-heading text-[10px] font-semibold text-slate-800">
+            INV-2048
+          </p>
+          <p className="font-heading text-[9px] font-semibold text-slate-800">
+            ₹12,450
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function Products() {
   return (
-    <section id="products" className="relative overflow-hidden bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-36">
+    <section
+      id="products"
+      className="relative overflow-hidden bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-36"
+    >
       <div className="pointer-events-none absolute left-1/2 top-0 h-100 w-200 -translate-x-1/2 rounded-full bg-blue-50 blur-[140px]" />
 
       <div className="relative mx-auto max-w-350">
@@ -232,7 +257,9 @@ function Products() {
               className="mt-4 max-w-4xl font-heading text-[2.15rem] font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 sm:mt-5 sm:text-5xl lg:text-6xl"
             >
               Software built for
-              <span className="block text-slate-400">how businesses actually work.</span>
+              <span className="block text-slate-400">
+                how businesses actually work.
+              </span>
             </motion.h2>
           </div>
 
@@ -273,12 +300,18 @@ function Products() {
               </h3>
 
               <p className="mt-4 max-w-xl font-body text-sm leading-6 text-slate-300 sm:mt-5 sm:leading-7 lg:text-base">
-                A modern learning management platform designed to organize courses,
-                manage learners, track progress and simplify digital training experiences.
+                A modern learning management platform designed to organize
+                courses, manage learners, track progress and simplify digital
+                training experiences.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-2 sm:mt-8">
-                {["Course Management", "Learners", "Progress Tracking", "Analytics"].map((item) => (
+                {[
+                  "Course Management",
+                  "Learners",
+                  "Progress Tracking",
+                  "Analytics",
+                ].map((item) => (
                   <span
                     key={item}
                     className="rounded-full border border-white/10 bg-white/4 px-3 py-1.5 font-body text-[8px] font-medium text-slate-300 sm:py-2 sm:text-[9px]"
@@ -293,7 +326,9 @@ function Products() {
                 className="group mt-7 inline-flex w-auto items-center gap-3 rounded-full bg-brand-accent px-5 py-3 font-body text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-blue-500 sm:mt-10 sm:px-6 sm:py-3.5"
               >
                 Explore Product
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             </div>
 
@@ -312,36 +347,50 @@ function Products() {
               className="group flex flex-col rounded-[26px] border border-slate-200 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-8"
             >
               <div className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2">
-                <span className="shrink-0 font-body text-[10px] font-semibold uppercase leading-4 tracking-[0.2em] text-brand-primary">{product.number}</span>
-                <span className="font-body text-[12px] font-semibold uppercase leading-4 tracking-[0.12em] text-slate-400">{product.category}</span>
+                <span className="shrink-0 font-body text-[10px] font-semibold uppercase leading-4 tracking-[0.2em] text-brand-primary">
+                  {product.number}
+                </span>
+                <span className="font-body text-[12px] font-semibold uppercase leading-4 tracking-[0.12em] text-slate-400">
+                  {product.category}
+                </span>
               </div>
 
               <h3 className="mt-6 text-left font-heading text-2xl font-semibold tracking-[-0.03em] text-slate-950 sm:mt-7 sm:text-3xl">
                 GenData {product.title}
               </h3>
 
-              <p className="mt-3 font-body text-sm leading-6 text-slate-500 sm:mt-4 sm:leading-7">{product.description}</p>
+              <p className="mt-3 font-body text-sm leading-6 text-slate-500 sm:mt-4 sm:leading-7">
+                {product.description}
+              </p>
 
               <ProductVisual type={product.id} />
 
               <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
                 {product.features.map((feature) => (
-                  <span key={feature} className="rounded-full bg-slate-50 px-3 py-1.5 font-body text-[8px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+                  <span
+                    key={feature}
+                    className="rounded-full bg-slate-50 px-3 py-1.5 font-body text-[8px] font-semibold uppercase tracking-[0.1em] text-slate-500"
+                  >
                     {feature}
                   </span>
                 ))}
               </div>
 
-              <Link to={`/products/${product.id}`} className="mt-6 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary sm:mt-8">
+              <Link
+                to={`/products/${product.id}`}
+                className="mt-6 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary sm:mt-8"
+              >
                 Explore Product
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             </motion.article>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Products
+export default Products;

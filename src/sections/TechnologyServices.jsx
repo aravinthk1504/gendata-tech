@@ -1,5 +1,5 @@
-import { motion } from "motion/react"
-import { Link } from "react-router-dom"
+import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 function FullStackVisual() {
   const layers = [
@@ -7,7 +7,7 @@ function FullStackVisual() {
     { name: "API", sub: "Integration" },
     { name: "Backend", sub: "Logic" },
     { name: "Database", sub: "Data" },
-  ]
+  ];
 
   return (
     <div className="relative mt-8 overflow-hidden lg:mt-2 lg:flex lg:min-h-70 lg:items-center lg:justify-center">
@@ -118,11 +118,11 @@ function FullStackVisual() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function SoftwareVisual() {
-  const modules = ["Module A", "Module B", "Module C"]
+  const modules = ["Module A", "Module B", "Module C"];
 
   return (
     <div className="relative mt-7 flex h-48 items-center justify-center sm:mt-8 sm:h-44">
@@ -131,7 +131,12 @@ function SoftwareVisual() {
           <motion.div
             key={module}
             animate={{ x: [0, 4, 0] }}
-            transition={{ duration: 3, delay: index * 0.35, repeat: Infinity, ease: "easeInOut" }}
+            transition={{
+              duration: 3,
+              delay: index * 0.35,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="flex h-10 w-22 items-center justify-center rounded-lg border border-slate-200 bg-white font-body text-[8px] font-semibold uppercase tracking-[0.1em] text-slate-500 shadow-sm sm:h-9 sm:w-20"
           >
             {module}
@@ -146,7 +151,9 @@ function SoftwareVisual() {
         transition={{ duration: 3, repeat: Infinity }}
         className="relative z-10 flex h-22 w-22 items-center justify-center rounded-2xl bg-brand-primary shadow-[0_15px_40px_rgba(0,45,204,0.18)] sm:h-20 sm:w-20"
       >
-        <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.12em] text-white">Core</span>
+        <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.12em] text-white">
+          Core
+        </span>
       </motion.div>
 
       <div className="absolute right-[20%] h-px w-[17%] overflow-hidden bg-slate-200 sm:right-[22%] sm:w-[16%]">
@@ -158,10 +165,12 @@ function SoftwareVisual() {
       </div>
 
       <div className="absolute right-0 flex h-18 w-18 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 sm:h-16 sm:w-16">
-        <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-brand-primary">Data</span>
+        <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-brand-primary">
+          Data
+        </span>
       </div>
     </div>
-  )
+  );
 }
 
 function AppVisual() {
@@ -174,34 +183,53 @@ function AppVisual() {
       >
         <div className="text-center">
           <div className="mx-auto h-8 w-8 rounded-lg bg-blue-50 sm:h-7 sm:w-7" />
-          <p className="mt-2 font-body text-[7px] font-semibold uppercase tracking-[0.1em] text-slate-500">Android</p>
+          <p className="mt-2 font-body text-[7px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+            Android
+          </p>
         </div>
       </motion.div>
 
       <div className="absolute left-[27%] h-px w-[16%] bg-slate-200 sm:left-[31%] sm:w-[15%]" />
 
       <motion.div
-        animate={{ boxShadow: ["0 0 0 rgba(5,124,250,0)", "0 0 30px rgba(5,124,250,0.18)", "0 0 0 rgba(5,124,250,0)"] }}
+        animate={{
+          boxShadow: [
+            "0 0 0 rgba(5,124,250,0)",
+            "0 0 30px rgba(5,124,250,0.18)",
+            "0 0 0 rgba(5,124,250,0)",
+          ],
+        }}
         transition={{ duration: 3, repeat: Infinity }}
         className="relative z-10 flex h-22 w-22 items-center justify-center rounded-2xl bg-linear-to-br from-brand-primary to-brand-accent sm:h-20 sm:w-20"
       >
-        <span className="text-center font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-white">App<br />Core</span>
+        <span className="text-center font-heading text-[9px] font-semibold uppercase tracking-[0.1em] text-white">
+          App
+          <br />
+          Core
+        </span>
       </motion.div>
 
       <div className="absolute right-[27%] h-px w-[16%] bg-slate-200 sm:right-[31%] sm:w-[15%]" />
 
       <motion.div
         animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 4, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
+        transition={{
+          duration: 4,
+          delay: 0.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="absolute right-[4%] flex h-30 w-20 items-center justify-center rounded-[20px] border-2 border-slate-800 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.08)] sm:right-[12%] sm:h-27 sm:w-17"
       >
         <div className="text-center">
           <div className="mx-auto h-8 w-8 rounded-full bg-slate-100 sm:h-7 sm:w-7" />
-          <p className="mt-2 font-body text-[7px] font-semibold uppercase tracking-[0.1em] text-slate-500">iOS</p>
+          <p className="mt-2 font-body text-[7px] font-semibold uppercase tracking-[0.1em] text-slate-500">
+            iOS
+          </p>
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
 
 function IoTVisual() {
@@ -210,7 +238,7 @@ function IoTVisual() {
     { title: "Device", label: "Edge" },
     { title: "Cloud", label: "Connect" },
     { title: "AI", label: "Intelligence" },
-  ]
+  ];
 
   return (
     <div className="relative mt-2 flex min-h-64 items-center justify-center overflow-hidden sm:min-h-65">
@@ -218,7 +246,10 @@ function IoTVisual() {
 
       <div className="relative z-10 grid w-full max-w-sm grid-cols-2 gap-4 px-1 sm:flex sm:max-w-lg sm:items-center sm:justify-center sm:gap-0 sm:px-0">
         {items.map((item, index) => (
-          <div key={item.title} className="relative flex items-center justify-center sm:justify-start">
+          <div
+            key={item.title}
+            className="relative flex items-center justify-center sm:justify-start"
+          >
             <motion.div
               animate={index === 3 ? { scale: [1, 1.07, 1] } : {}}
               transition={{ duration: 3, repeat: Infinity }}
@@ -228,8 +259,12 @@ function IoTVisual() {
                   : "border-slate-200 bg-white text-slate-700 shadow-sm"
               }`}
             >
-              <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.08em]">{item.title}</span>
-              <span className={`mt-1 font-body text-[7px] ${index === 3 ? "text-blue-100" : "text-slate-400"}`}>
+              <span className="font-heading text-[9px] font-semibold uppercase tracking-[0.08em]">
+                {item.title}
+              </span>
+              <span
+                className={`mt-1 font-body text-[7px] ${index === 3 ? "text-blue-100" : "text-slate-400"}`}
+              >
                 {item.label}
               </span>
             </motion.div>
@@ -238,7 +273,12 @@ function IoTVisual() {
               <div className="relative hidden h-px w-5 overflow-hidden bg-slate-200 sm:block sm:w-9">
                 <motion.span
                   animate={{ x: ["-100%", "250%"] }}
-                  transition={{ duration: 1.8, delay: index * 0.35, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 1.8,
+                    delay: index * 0.35,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                   className="absolute h-px w-1/2 bg-brand-accent"
                 />
               </div>
@@ -247,7 +287,7 @@ function IoTVisual() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function TechnologyServices() {
@@ -267,66 +307,185 @@ function TechnologyServices() {
       <div className="relative mx-auto max-w-350">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-brand-primary"
+            >
               Technology Capabilities
             </motion.p>
-            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.08 }} className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-slate-950 sm:text-5xl lg:text-6xl">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 }}
+              className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-slate-950 sm:text-5xl lg:text-6xl"
+            >
               Engineering the technology
-              <span className="block text-slate-400">behind intelligent products.</span>
+              <span className="block text-slate-400">
+                behind intelligent products.
+              </span>
             </motion.h2>
           </div>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-md font-body text-sm leading-7 text-slate-600 lg:col-span-4 lg:justify-self-end lg:text-base">
-            From digital platforms to connected devices, our engineering capabilities turn ideas and intelligence into reliable, real-world technology.
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-md font-body text-sm leading-7 text-slate-600 lg:col-span-4 lg:justify-self-end lg:text-base"
+          >
+            From digital platforms to connected devices, our engineering
+            capabilities turn ideas and intelligence into reliable, real-world
+            technology.
           </motion.p>
         </div>
 
         <div className="mt-14 grid gap-5 sm:mt-16 lg:mt-20 lg:grid-cols-2">
-          <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65 }} className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:col-span-2 lg:p-10">
+          <motion.article
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65 }}
+            className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:col-span-2 lg:p-10"
+          >
             <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
               <div>
-                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">01 / Full Stack</span>
-                <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.03em] text-slate-950 lg:text-4xl">Full Stack Development</h3>
-                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-500">From static and multi-page websites to dynamic web applications, we build complete frontend and backend solutions with APIs, databases and scalable architecture.</p>
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
+                  01 / Full Stack
+                </span>
+                <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.03em] text-slate-950 lg:text-4xl">
+                  Full Stack Development
+                </h3>
+                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-500">
+                  From static and multi-page websites to dynamic web
+                  applications, we build complete frontend and backend solutions
+                  with APIs, databases and scalable architecture.
+                </p>
                 <div className="mt-7 flex flex-wrap gap-2">
                   {["Frontend", "Backend", "APIs", "Database"].map((item) => (
-                    <span key={item} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-body text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">{item}</span>
+                    <span
+                      key={item}
+                      className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-body text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500"
+                    >
+                      {item}
+                    </span>
                   ))}
                 </div>
-                <Link to="/services" className="mt-8 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary">Explore capability <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></Link>
+                <Link
+                  to="/services"
+                  className="mt-8 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+                >
+                  Explore capability{" "}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
               </div>
               <FullStackVisual />
             </div>
           </motion.article>
 
-          <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65, delay: 0.08 }} className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9">
-            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">02 / Software</span>
-            <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">Software Development</h3>
-            <p className="mt-4 font-body text-sm leading-7 text-slate-500">Custom software solutions engineered around business processes, operational requirements and evolving digital needs.</p>
+          <motion.article
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.08 }}
+            className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9"
+          >
+            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
+              02 / Software
+            </span>
+            <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">
+              Software Development
+            </h3>
+            <p className="mt-4 font-body text-sm leading-7 text-slate-500">
+              Custom software solutions engineered around business processes,
+              operational requirements and evolving digital needs.
+            </p>
             <SoftwareVisual />
-            <Link to="/services" className="inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary">Explore capability <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></Link>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+            >
+              Explore capability{" "}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </motion.article>
 
-          <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65, delay: 0.14 }} className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9">
-            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">03 / Mobile</span>
-            <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">App Development</h3>
-            <p className="mt-4 font-body text-sm leading-7 text-slate-500">Modern mobile applications for Android and iOS designed around intuitive experiences, reliable performance and scalable integrations.</p>
+          <motion.article
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.14 }}
+            className="group rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:p-9"
+          >
+            <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
+              03 / Mobile
+            </span>
+            <h3 className="mt-5 font-heading text-2xl font-semibold tracking-[-0.025em] text-slate-950 sm:text-3xl">
+              App Development
+            </h3>
+            <p className="mt-4 font-body text-sm leading-7 text-slate-500">
+              Modern mobile applications for Android and iOS designed around
+              intuitive experiences, reliable performance and scalable
+              integrations.
+            </p>
             <AppVisual />
-            <Link to="/services" className="inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary">Explore capability <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></Link>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+            >
+              Explore capability{" "}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </motion.article>
 
-          <motion.article initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65, delay: 0.18 }} className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:col-span-2 lg:p-10">
+          <motion.article
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.18 }}
+            className="group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_15px_50px_rgba(15,23,42,0.035)] transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_25px_70px_rgba(15,23,42,0.07)] sm:p-7 lg:col-span-2 lg:p-10"
+          >
             <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
               <div>
-                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">04 / Connected Systems</span>
-                <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.03em] text-slate-950 lg:text-4xl">IoT Solutions</h3>
-                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-500">Connected IoT solutions combining sensors, devices, cloud platforms, automation and intelligent monitoring for real-world environments.</p>
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
+                  04 / Connected Systems
+                </span>
+                <h3 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.03em] text-slate-950 lg:text-4xl">
+                  IoT Solutions
+                </h3>
+                <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-500">
+                  Connected IoT solutions combining sensors, devices, cloud
+                  platforms, automation and intelligent monitoring for
+                  real-world environments.
+                </p>
                 <div className="mt-7 flex flex-wrap gap-2">
-                  {["Sensors", "Edge", "Cloud", "Automation", "AI"].map((item) => (
-                    <span key={item} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-body text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500">{item}</span>
-                  ))}
+                  {["Sensors", "Edge", "Cloud", "Automation", "AI"].map(
+                    (item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-body text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-500"
+                      >
+                        {item}
+                      </span>
+                    ),
+                  )}
                 </div>
-                <Link to="/services" className="mt-8 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary">Explore capability <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></Link>
+                <Link
+                  to="/services"
+                  className="mt-8 inline-flex items-center gap-3 font-body text-xs font-semibold text-brand-primary"
+                >
+                  Explore capability{" "}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
               </div>
               <IoTVisual />
             </div>
@@ -334,7 +493,7 @@ function TechnologyServices() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default TechnologyServices
+export default TechnologyServices;

@@ -1,9 +1,5 @@
-import { useRef } from "react"
-import {
-  motion,
-  useInView,
-  useReducedMotion,
-} from "motion/react"
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 
 import {
   FiArrowRight,
@@ -12,31 +8,28 @@ import {
   FiCpu,
   FiLayers,
   FiSmartphone,
-   FiZap,
-} from "react-icons/fi"
+  FiZap,
+} from "react-icons/fi";
 
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-import Navbar from "../components/Navbar"
-import Footer from "../sections/Footer"
-
+import Navbar from "../components/Navbar";
+import Footer from "../sections/Footer";
 
 function About() {
   /* ======================================================
       HERO ANIMATION CONTROL
   ====================================================== */
 
-  const heroRef = useRef(null)
+  const heroRef = useRef(null);
 
   const heroInView = useInView(heroRef, {
     margin: "-10% 0px -10% 0px",
-  })
+  });
 
-  const reduceMotion = useReducedMotion()
+  const reduceMotion = useReducedMotion();
 
-  const heroShouldAnimate =
-    heroInView && !reduceMotion
-
+  const heroShouldAnimate = heroInView && !reduceMotion;
 
   /* ======================================================
       COMPANY SNAPSHOT
@@ -58,8 +51,7 @@ function About() {
       label: "Years",
       description: "Building GenData Tech",
     },
-  ]
-
+  ];
 
   /* ======================================================
       PRINCIPLES
@@ -93,8 +85,7 @@ function About() {
       description:
         "We aim to create systems that can evolve as requirements, users and technologies continue to grow.",
     },
-  ]
-
+  ];
 
   /* ======================================================
       WHAT WE BUILD
@@ -142,8 +133,7 @@ function About() {
       description:
         "Practical learning programs focused on AI, data, development and emerging technologies.",
     },
-  ]
-
+  ];
 
   /* ======================================================
       APPROACH
@@ -153,8 +143,7 @@ function About() {
     {
       number: "01",
       title: "Understand",
-      description:
-        "Define the problem, goals and actual requirements.",
+      description: "Define the problem, goals and actual requirements.",
     },
 
     {
@@ -181,18 +170,15 @@ function About() {
     {
       number: "05",
       title: "Deploy",
-      description:
-        "Prepare and deliver the solution for real-world use.",
+      description: "Prepare and deliver the solution for real-world use.",
     },
 
     {
       number: "06",
       title: "Improve",
-      description:
-        "Learn from usage and continue refining the system.",
+      description: "Learn from usage and continue refining the system.",
     },
-  ]
-
+  ];
 
   /* ======================================================
       JOURNEY
@@ -225,15 +211,13 @@ function About() {
       description:
         "Today we are strengthening our focus on AI systems, automation, digital products, engineering and technology training.",
     },
-  ]
-
+  ];
 
   return (
     <>
       <Navbar />
 
       <main className="overflow-hidden bg-white">
-
         {/* ======================================================
             HERO
         ====================================================== */}
@@ -270,7 +254,6 @@ function About() {
             }
           />
 
-
           {/* SECONDARY GLOW */}
 
           <motion.div
@@ -301,7 +284,6 @@ function About() {
             }
           />
 
-
           {/* GRID */}
 
           <div
@@ -315,15 +297,11 @@ function About() {
             }}
           />
 
-
           <div className="relative mx-auto max-w-[1400px]">
-
             <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
-
               {/* HERO COPY */}
 
               <div>
-
                 <motion.p
                   initial={{
                     opacity: 0,
@@ -348,7 +326,6 @@ function About() {
                   About GenData Tech
                 </motion.p>
 
-
                 <motion.h1
                   initial={{
                     opacity: 0,
@@ -372,12 +349,10 @@ function About() {
                   className="mt-5 max-w-4xl font-heading text-4xl font-semibold leading-[1.07] tracking-[-0.045em] text-white sm:text-5xl lg:text-7xl"
                 >
                   Engineering intelligence for
-
                   <span className="block bg-gradient-to-r from-white via-blue-100 to-[#057CFA] bg-clip-text text-transparent">
                     real-world impact.
                   </span>
                 </motion.h1>
-
 
                 <motion.p
                   initial={{
@@ -403,10 +378,9 @@ function About() {
                 >
                   GenData Tech is an AI-first technology company building
                   intelligent systems, digital products and engineering
-                  solutions designed around practical business and
-                  real-world challenges.
+                  solutions designed around practical business and real-world
+                  challenges.
                 </motion.p>
-
 
                 <motion.div
                   initial={{
@@ -430,28 +404,18 @@ function About() {
                   }}
                   className="mt-8 flex flex-wrap gap-2.5"
                 >
-
-                  {[
-                    "AI",
-                    "Automation",
-                    "Products",
-                    "Engineering",
-                  ].map((item) => (
-
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-300"
-                    >
-                      {item}
-                    </span>
-
-                  ))}
-
+                  {["AI", "Automation", "Products", "Engineering"].map(
+                    (item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-body text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-300"
+                      >
+                        {item}
+                      </span>
+                    ),
+                  )}
                 </motion.div>
-
               </div>
-
-
 
               {/* ==================================================
                   HERO INTELLIGENCE STACK
@@ -479,9 +443,7 @@ function About() {
                 }}
                 className="relative mx-auto w-full max-w-[470px]"
               >
-
                 <div className="relative flex min-h-[370px] items-center justify-center">
-
                   {/* BACKGROUND RING */}
 
                   <motion.div
@@ -510,11 +472,9 @@ function About() {
                     <div className="absolute left-1/2 top-[-4px] h-2 w-2 -translate-x-1/2 rounded-full bg-[#057CFA] shadow-[0_0_16px_rgba(5,124,250,0.9)]" />
                   </motion.div>
 
-
                   {/* STACK */}
 
                   <div className="relative z-10 flex w-full max-w-[330px] flex-col gap-3">
-
                     {[
                       {
                         number: "04",
@@ -537,16 +497,12 @@ function About() {
                         sub: "Software, mobile & IoT",
                       },
                     ].map((layer, index) => (
-
                       <motion.div
                         key={layer.number}
                         animate={
                           heroShouldAnimate
                             ? {
-                                x:
-                                  index % 2 === 0
-                                    ? [0, 5, 0]
-                                    : [0, -5, 0],
+                                x: index % 2 === 0 ? [0, 5, 0] : [0, -5, 0],
                               }
                             : {
                                 x: 0,
@@ -568,7 +524,6 @@ function About() {
                         <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-transparent via-[#057CFA] to-transparent" />
 
                         <div className="flex items-center justify-between gap-5">
-
                           <div>
                             <p className="font-heading text-sm font-semibold text-white">
                               {layer.label}
@@ -582,37 +537,23 @@ function About() {
                           <span className="font-heading text-[10px] font-semibold text-[#057CFA]">
                             {layer.number}
                           </span>
-
                         </div>
-
                       </motion.div>
-
                     ))}
-
                   </div>
-
                 </div>
-
               </motion.div>
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             WHO WE ARE
         ====================================================== */}
 
         <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
-
           <div className="mx-auto max-w-[1400px]">
-
             <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
-
               {/* LEFT */}
 
               <motion.div
@@ -631,18 +572,14 @@ function About() {
                   duration: 0.6,
                 }}
               >
-
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
                   Who We Are
                 </p>
 
-
                 <h2 className="mt-5 max-w-xl font-heading text-3xl font-semibold leading-[1.15] tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
                   An AI-first company focused on practical intelligent systems.
                 </h2>
-
               </motion.div>
-
 
               {/* RIGHT */}
 
@@ -664,7 +601,6 @@ function About() {
                 }}
                 className="space-y-5"
               >
-
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                   GenData Tech focuses primarily on AI model development,
                   Agentic AI, AI automation and customized intelligent
@@ -673,14 +609,12 @@ function About() {
                   practical application.
                 </p>
 
-
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                   Alongside AI, our engineering capabilities include full-stack
-                  development, software development, mobile applications and
-                  IoT solutions — allowing us to connect intelligence with the
+                  development, software development, mobile applications and IoT
+                  solutions — allowing us to connect intelligence with the
                   platforms and systems where it creates value.
                 </p>
-
 
                 <p className="font-body text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                   We are still growing, learning and expanding our capabilities.
@@ -688,29 +622,19 @@ function About() {
                   company that approaches problems with both intelligence and
                   engineering discipline.
                 </p>
-
               </motion.div>
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             COMPANY SNAPSHOT
         ====================================================== */}
 
         <section className="border-y border-slate-200 bg-[#F7F9FC] px-6 py-14 lg:px-10 lg:py-18">
-
           <div className="mx-auto max-w-[1400px]">
-
             <div className="grid divide-y divide-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-
               {companyStats.map((stat, index) => (
-
                 <motion.div
                   key={stat.label}
                   initial={{
@@ -730,9 +654,7 @@ function About() {
                   }}
                   className="py-7 sm:px-8 sm:py-4 lg:px-12"
                 >
-
                   <div className="flex items-end gap-3">
-
                     <span className="font-heading text-5xl font-semibold tracking-[-0.05em] text-slate-950 lg:text-6xl">
                       {stat.value}
                     </span>
@@ -740,55 +662,36 @@ function About() {
                     <span className="pb-1 font-heading text-sm font-semibold text-[#057CFA]">
                       {stat.label}
                     </span>
-
                   </div>
-
 
                   <p className="mt-3 font-body text-xs text-slate-500">
                     {stat.description}
                   </p>
-
                 </motion.div>
-
               ))}
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             MISSION + VISION
         ====================================================== */}
 
         <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
-
           <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[900px] -translate-x-1/2 rounded-full bg-[#002DCC]/10 blur-[170px]" />
 
-
           <div className="relative mx-auto max-w-[1400px]">
-
             <div className="max-w-3xl">
-
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
                 Our Direction
               </p>
 
-
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                Guided by purpose.
-                Built with direction.
+                Guided by purpose. Built with direction.
               </h2>
-
             </div>
 
-
             <div className="mt-12 grid gap-5 lg:grid-cols-2">
-
-
               {/* MISSION */}
 
               <motion.div
@@ -808,28 +711,22 @@ function About() {
                 }}
                 className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.035] p-6 sm:p-8 lg:p-10"
               >
-
                 <div className="absolute left-0 top-10 h-16 w-[2px] bg-[#057CFA]" />
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                   Mission
                 </p>
 
-
                 <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
                   Build intelligence that works in the real world.
                 </h3>
-
 
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
                   Our mission is to build practical intelligent systems and
                   digital products that solve real problems through AI,
                   automation and strong engineering.
                 </p>
-
               </motion.div>
-
-
 
               {/* VISION */}
 
@@ -851,74 +748,54 @@ function About() {
                 }}
                 className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.035] p-6 sm:p-8 lg:p-10"
               >
-
                 <div className="absolute left-0 top-10 h-16 w-[2px] bg-[#002DCC]" />
-
 
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.2em] text-[#057CFA]">
                   Vision
                 </p>
 
-
                 <h3 className="mt-5 font-heading text-2xl font-semibold text-white sm:text-3xl">
                   Grow into a trusted AI-first technology company.
                 </h3>
 
-
                 <p className="mt-5 max-w-xl font-body text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
                   Our vision is to establish GenData Tech as a technology
-                  company known for useful, scalable and thoughtfully
-                  engineered AI-driven solutions.
+                  company known for useful, scalable and thoughtfully engineered
+                  AI-driven solutions.
                 </p>
-
               </motion.div>
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             PRINCIPLES
         ====================================================== */}
 
         <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
-
           <div className="mx-auto max-w-[1400px]">
-
             <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
-
               {/* INTRO */}
 
               <div>
-
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
                   Our Principles
                 </p>
-
 
                 <h2 className="mt-5 max-w-md font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
                   How we think about technology.
                 </h2>
 
-
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-900">
-                  A small set of principles guides how we approach
-                  technology, products and problem solving.
+                  A small set of principles guides how we approach technology,
+                  products and problem solving.
                 </p>
-
               </div>
-
 
               {/* PRINCIPLE GRID */}
 
               <div className="grid gap-4 sm:grid-cols-2">
-
                 {principles.map((principle, index) => (
-
                   <motion.div
                     key={principle.number}
                     initial={{
@@ -938,71 +815,50 @@ function About() {
                     }}
                     className="rounded-[24px] border border-slate-200 bg-[#F9FAFC] p-6 transition duration-300 hover:border-[#057CFA]/30 hover:bg-white hover:shadow-[0_18px_45px_rgba(15,23,42,0.05)]"
                   >
-
                     <span className="font-heading text-[12px] font-semibold text-[#057CFA]">
                       {principle.number}
                     </span>
-
 
                     <h3 className="mt-5 font-heading text-lg font-semibold text-slate-950">
                       {principle.title}
                     </h3>
 
-
                     <p className="mt-3 font-body text-sm leading-7 text-slate-900">
                       {principle.description}
                     </p>
-
                   </motion.div>
-
                 ))}
-
               </div>
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             WHAT WE BUILD
         ====================================================== */}
 
         <section className="bg-[#F7F9FC] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
-
           <div className="mx-auto max-w-[1400px]">
-
             <div className="max-w-3xl">
-
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
                 What We Build
               </p>
-
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
                 Intelligence connected with engineering.
               </h2>
 
-
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-500 sm:text-base">
                 Our capabilities combine AI with the software, platforms and
                 connected systems required to put intelligence into practice.
               </p>
-
             </div>
 
-
             <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-
               {capabilities.map((capability, index) => {
-
-                const Icon = capability.icon
+                const Icon = capability.icon;
 
                 return (
-
                   <motion.div
                     key={capability.title}
                     initial={{
@@ -1022,78 +878,55 @@ function About() {
                     }}
                     className="group rounded-[24px] border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-[#057CFA]/30 hover:shadow-[0_20px_50px_rgba(15,23,42,0.06)]"
                   >
-
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#002DCC] transition group-hover:bg-[#057CFA] group-hover:text-white">
                       <Icon />
                     </div>
-
 
                     <h3 className="mt-6 font-heading text-lg font-semibold text-slate-950">
                       {capability.title}
                     </h3>
 
-
                     <p className="mt-3 font-body text-sm leading-7 text-slate-500">
                       {capability.description}
                     </p>
-
                   </motion.div>
-
-                )
-
+                );
               })}
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             OUR APPROACH
         ====================================================== */}
 
         <section className="relative overflow-hidden bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
-
           <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[500px] rounded-full bg-[#057CFA]/7 blur-[150px]" />
 
-
           <div className="relative mx-auto max-w-[1400px]">
-
             <div className="max-w-3xl">
-
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#057CFA]">
                 Our Approach
               </p>
-
 
               <h2 className="mt-5 font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
                 From problem to working system.
               </h2>
 
-
               <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
-                Technology starts with understanding the problem. Our
-                approach keeps each stage connected from discovery through
-                continuous improvement.
+                Technology starts with understanding the problem. Our approach
+                keeps each stage connected from discovery through continuous
+                improvement.
               </p>
-
             </div>
 
-
             <div className="relative mt-14">
-
               {/* DESKTOP LINE */}
 
               <div className="absolute left-0 right-0 top-5 hidden h-px bg-gradient-to-r from-transparent via-[#057CFA]/25 to-transparent lg:block" />
 
-
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
-
                 {approach.map((step, index) => (
-
                   <motion.div
                     key={step.number}
                     initial={{
@@ -1113,79 +946,56 @@ function About() {
                     }}
                     className="relative"
                   >
-
                     <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#057CFA]/30 bg-[#06152C] font-heading text-[10px] font-semibold text-[#057CFA]">
                       {step.number}
                     </div>
-
 
                     <h3 className="mt-5 font-heading text-sm font-semibold text-white sm:text-base">
                       {step.title}
                     </h3>
 
-
                     <p className="mt-2 font-body text-xs leading-6 text-slate-200 sm:text-sm sm:leading-7">
                       {step.description}
                     </p>
-
                   </motion.div>
-
                 ))}
-
               </div>
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             JOURNEY
         ====================================================== */}
 
         <section className="bg-white px-6 py-20 sm:py-24 lg:px-10 lg:py-32">
-
           <div className="mx-auto max-w-[1400px]">
-
             <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-
               {/* INTRO */}
 
               <div>
-
                 <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-[#002DCC]">
                   Our Journey
                 </p>
-
 
                 <h2 className="mt-5 max-w-md font-heading text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
                   Two years of building the foundation.
                 </h2>
 
-
                 <p className="mt-5 max-w-md font-body text-sm leading-7 text-slate-500">
-                  GenData Tech is still at an early stage. The journey so far
-                  is about learning, delivering and steadily strengthening
-                  our AI-first technology direction.
+                  GenData Tech is still at an early stage. The journey so far is
+                  about learning, delivering and steadily strengthening our
+                  AI-first technology direction.
                 </p>
-
               </div>
-
 
               {/* TIMELINE */}
 
               <div className="relative">
-
                 <div className="absolute bottom-0 left-[18px] top-0 w-px bg-slate-200" />
 
-
                 <div className="space-y-9">
-
                   {journey.map((item, index) => (
-
                     <motion.div
                       key={item.number}
                       initial={{
@@ -1205,66 +1015,45 @@ function About() {
                       }}
                       className="relative grid grid-cols-[38px_1fr] gap-5"
                     >
-
                       <div className="relative z-10 mt-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-100 bg-white shadow-sm">
-
                         <span className="h-2.5 w-2.5 rounded-full bg-[#057CFA]" />
-
                       </div>
 
-
                       <div className="pb-3">
-                        
-
                         <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-heading text-sm font-semibold text-[#002DCC]">
+                            {item.year}
+                          </span>
 
-                            <span className="font-heading text-sm font-semibold text-[#002DCC]">
-                                {item.year}
-                            </span>
+                          <span className="h-1 w-1 rounded-full bg-slate-300" />
 
-                            <span className="h-1 w-1 rounded-full bg-slate-300" />
-
-                            <span className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
-                                {item.label}
-                            </span>
-
+                          <span className="font-body text-[9px] font-semibold uppercase tracking-[0.18em] text-[#057CFA]">
+                            {item.label}
+                          </span>
                         </div>
 
                         <h3 className="mt-2 font-heading text-lg font-semibold text-slate-950">
                           {item.title}
                         </h3>
 
-
                         <p className="mt-3 max-w-2xl font-body text-sm leading-7 text-slate-500">
                           {item.description}
                         </p>
-
                       </div>
-
                     </motion.div>
-
                   ))}
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </section>
-
-
 
         {/* ======================================================
             FINAL CTA
         ====================================================== */}
 
         <section className="bg-[#030b18] px-6 py-20 sm:py-24 lg:px-10 lg:py-28">
-
           <div className="mx-auto max-w-[1400px]">
-
             <motion.div
               initial={{
                 opacity: 0,
@@ -1282,43 +1071,32 @@ function About() {
               }}
               className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:p-12"
             >
-
               <div className="pointer-events-none absolute -right-24 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-[#057CFA]/10 blur-[110px]" />
 
-
               <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-
                 <div>
-
                   <p className="font-body text-[10px] font-semibold uppercase tracking-[0.24em] text-[#057CFA]">
                     Build With GenData Tech
                   </p>
-
 
                   <h2 className="mt-4 max-w-3xl font-heading text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
                     Building something that needs intelligence?
                   </h2>
 
-
                   <p className="mt-5 max-w-2xl font-body text-sm leading-7 text-slate-400 sm:text-base">
                     Talk to us about AI, automation, digital products or
                     engineering solutions.
                   </p>
-
                 </div>
 
-
                 <div className="flex flex-wrap gap-3">
-
                   <Link
                     to="/Contact"
                     className="group inline-flex items-center gap-2 rounded-full bg-[#057CFA] px-6 py-3.5 font-body text-xs font-semibold text-white transition hover:bg-[#002DCC]"
                   >
                     Contact Us
-
                     <FiArrowRight className="transition group-hover:translate-x-1" />
                   </Link>
-
 
                   <Link
                     to="/"
@@ -1326,23 +1104,16 @@ function About() {
                   >
                     Explore GenData Tech
                   </Link>
-
                 </div>
-
               </div>
-
             </motion.div>
-
           </div>
-
         </section>
-
       </main>
 
       <Footer />
     </>
-  )
+  );
 }
 
-
-export default About
+export default About;

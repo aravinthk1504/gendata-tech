@@ -1,27 +1,15 @@
-import { Link } from "react-router-dom"
-import { motion } from "motion/react"
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 
-import {
-  FaGithub,
-  FaInstagram,
-  FaFacebookF,
-  FaWhatsapp,
-} from "react-icons/fa"
+import logoMark from "../assets/gendata-tech-mark.png"
 
+import { FaGithub, FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 const footerLinks = {
   Services: [
     {
-      label: "AI Development",
-      path: "/services/ai-development",
-    },
-    {
-      label: "Agentic AI",
-      path: "/services/agentic-ai",
-    },
-    {
-      label: "AI Automation",
-      path: "/services/ai-automation",
+      label: "AI/ML Development",
+      path: "/services/ai-ml-development",
     },
     {
       label: "Full Stack Development",
@@ -74,8 +62,7 @@ const footerLinks = {
       path: "/contact",
     },
   ],
-}
-
+};
 
 const socialLinks = [
   {
@@ -98,13 +85,11 @@ const socialLinks = [
     icon: FaWhatsapp,
     href: "#",
   },
-]
-
+];
 
 function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#030b18] px-6 pb-7 pt-20 lg:px-10 lg:pt-24">
-
       {/* =====================================
           BACKGROUND
       ====================================== */}
@@ -129,69 +114,65 @@ function Footer() {
         }}
       />
 
-
       <div className="relative mx-auto max-w-350">
-
         {/* =====================================
             MAIN FOOTER
         ====================================== */}
 
         <div className="grid gap-14 border-b border-white/[0.08] pb-16 lg:grid-cols-[1.2fr_1.8fr] lg:gap-20">
-
           {/* BRAND */}
 
           <div>
-
             <Link
               to="/"
-              className="inline-flex items-center gap-3"
+              aria-label="GenData Tech Home"
+              className="inline-flex items-center gap-0.5"
             >
-              {/* Temporary logo mark */}
+              {/* LOGO */}
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-brand-primary to-brand-accent">
+              <img
+                src={logoMark}
+                alt="GenData Tech"
+                className="h-11 w-11 shrink-0 object-contain sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+              />
 
-                <span className="font-heading text-xs font-bold text-white">
-                  GD
+              {/* BRAND TEXT */}
+
+              <div className="flex flex-col">
+                <span
+                  className="font-heading text-xl font-bold leading-none tracking-[-0.03em] sm:text-2xl"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #003DB8 0%, #002DCC 45%, #057CFA 75%, #18BDF2 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  GenData Tech
                 </span>
 
+                <span className="mt-1 font-body text-[10px] font-medium tracking-[0.04em] text-[#057CFA] sm:text-[10px]">
+                  Think - Build - Evolve
+                </span>
               </div>
-
-
-              <div>
-
-                <p className="font-heading text-lg font-semibold tracking-[-0.02em] text-white">
-                  GenData Tech
-                </p>
-
-                <p className="mt-0.5 font-body text-[7px] font-semibold uppercase tracking-[0.2em] text-slate-200">
-                  Intelligence. Engineered.
-                </p>
-
-              </div>
-
             </Link>
 
-
             <p className="mt-7 max-w-md font-body text-sm leading-7 text-slate-300">
-              Building intelligent AI systems, digital products and
-              connected technology designed for real-world applications.
+              Building intelligent AI systems, digital products and connected
+              technology designed for real-world applications.
             </p>
-
 
             {/* Social */}
 
             <div className="mt-8">
-
-              <p className="font-body text-[8px] font-semibold uppercase tracking-[0.2em] text-slate-200">
+              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-200">
                 Connect
               </p>
 
-
               <div className="mt-4 flex gap-2">
-
                 {socialLinks.map((social) => {
-
-                  const Icon = social.icon
+                  const Icon = social.icon;
 
                   return (
                     <motion.a
@@ -209,83 +190,52 @@ function Footer() {
                       className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-slate-200 transition duration-300 hover:border-brand-accent/40 hover:bg-brand-accent/10 hover:text-white"
                     >
                       <Icon size={15} />
-
                     </motion.a>
-                  )
+                  );
                 })}
-
               </div>
-
             </div>
-
           </div>
-
-
 
           {/* LINKS */}
 
           <div className="grid gap-10 sm:grid-cols-3">
+            {Object.entries(footerLinks).map(([section, links]) => (
+              <div key={section}>
+                <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-100">
+                  {section}
+                </p>
 
-            {Object.entries(footerLinks).map(
-              ([section, links]) => (
+                <div className="mt-5 flex flex-col gap-3.5">
+                  {links.map((link) => (
+                    <Link
+                      key={link.label}
+                      to={link.path}
+                      className="group flex w-fit items-center gap-2 font-body text-xs text-slate-300 transition-colors duration-300 hover:text-white"
+                    >
+                      <span>{link.label}</span>
 
-                <div key={section}>
-
-                  <p className="font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-100">
-                    {section}
-                  </p>
-
-
-                  <div className="mt-5 flex flex-col gap-3.5">
-
-                    {links.map((link) => (
-
-                      <Link
-                        key={link.label}
-                        to={link.path}
-                        className="group flex w-fit items-center gap-2 font-body text-xs text-slate-300 transition-colors duration-300 hover:text-white"
-                      >
-
-                        <span>
-                          {link.label}
-                        </span>
-
-                        <span className="translate-x-[-4px] text-brand-accent opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                          →
-                        </span>
-
-                      </Link>
-
-                    ))}
-
-                  </div>
-
+                      <span className="translate-x-[-4px] text-brand-accent opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                        →
+                      </span>
+                    </Link>
+                  ))}
                 </div>
-
-              )
-            )}
-
+              </div>
+            ))}
           </div>
-
         </div>
-
-
-
-
 
         {/* =====================================
             BOTTOM
         ====================================== */}
 
         <div className="flex flex-col gap-4 pt-7 sm:flex-row sm:items-center sm:justify-between">
-
           <p className="font-body text-[12px] text-slate-300">
             © {new Date().getFullYear()} GenData Tech. All rights reserved.
           </p>
 
-
           <div className="flex gap-5">
-
             <Link
               to="/privacy"
               className="font-body text-[12px] text-slate-300 transition hover:text-slate-300"
@@ -299,15 +249,11 @@ function Footer() {
             >
               Terms
             </Link>
-
           </div>
-
         </div>
-
       </div>
-
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
